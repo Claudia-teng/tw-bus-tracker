@@ -1,0 +1,62 @@
+.topbar
+  display: flex
+  justify-content: space-around
+  align-items: center
+  height: 10%
+  img:nth-child(1)
+    width: .5rem
+    height: 1rem
+  img:nth-child(2)
+    width: 7rem
+    height: 3rem
+  img:nth-child(3)
+    width: 1.5rem
+    height: 1.5rem
+
+.direction
+  display: flex
+  > div
+    flex: 1
+    padding: 1rem
+    text-align: center
+    box-shadow: 0 6px 2px -2px var(--blue)
+    > span:nth-child(1)
+      color: var(--blue)
+      margin-right: .3rem
+    > span:nth-child(2)
+      color: var(--white)
+
+.route
+  background-color: var(--gray)
+  height: 80%
+  > div:nth-child(1)
+    text-align: right
+    color: var(--blue)
+    padding: 1rem 1rem 0rem 1rem
+    font-size: .8rem
+  .card
+    display: flex
+    align-items: center
+    margin: 1rem 0rem
+    > div:nth-child(1)
+      width: 5rem
+      padding: .7rem 0rem
+      margin: 0rem 1rem
+      border-radius: 12px
+      font-weight: bold
+      text-align: center 
+    > div:nth-child(2)
+      color: var(--white)
+    &.no-depart > div:nth-child(1)
+      color: var(--gray-light)
+      background-color: var(--black)
+    &.coming > div:nth-child(1)
+      color: var(--black)
+      background-color: var(--blue)
+    &.waiting > div:nth-child(1)
+      color: var(--blue)
+      background-color: var(--black)
+      box-shadow: 0px 0px 6px #1CC8EE
+    &.departing > div:nth-child(1)
+      color: var(--white)
+      background-color: var(--gray-light)
