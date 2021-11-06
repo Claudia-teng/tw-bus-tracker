@@ -5,13 +5,12 @@
 </div>
 
 <ng-container *ngIf="searchMode===true">
-  <div class="empty"></div>
-
   <div class="keyboard">
     <div *ngIf="keyboardMode==='number'"
           class="number">
       <div>
         <button (click)="this.keyboardMode='city'">
+          <img src="assets/navigate-icon.png">
           選擇縣市
         </button>
         <button>
@@ -34,7 +33,9 @@
             </ng-container>
           </ng-container>
         </ng-container>
-        <button>清除</button>
+        <button>
+          <img src="assets/delete-icon.png">
+        </button>
       </div>
     </div>
 
@@ -74,3 +75,4 @@
     </div>
   </div>
 </ng-container>
+

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { ButtonModule } from 'primeng/button';
 import { CityBusSearchComponent } from './components/city-bus/city-bus-search/city-bus-search.component';
 import { CityBusRouteComponent } from './components/city-bus/city-bus-route/city-bus-route.component';
 import { IndexComponent } from './components/index/index.component';
@@ -21,8 +20,7 @@ import { IndexComponent } from './components/index/index.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
-    ButtonModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
