@@ -98,10 +98,6 @@ export const cityBusCity: Array<KeyboardBtns> = [
     value: "台北市"
   },
   {
-    label: "南投縣",
-    value: "台北市"
-  },
-  {
     label: "彰化縣",
     value: "台北市"
   },

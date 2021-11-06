@@ -26,28 +26,36 @@
       display: flex
       align-items: center
       justify-content: center
-      flex: 3 0 20%
+      flex: 3
       color: var(--white)
     button:nth-child(2)
-      flex: 2 0 20%
+      flex: 2
       color: var(--blue)
   .number > div:nth-child(2)
     display: flex
     flex-wrap: wrap
     button
-      flex: 1 0 20%
+      flex: 1 0 calc(20% - .6rem)
   .city
     display: flex
     flex-wrap: wrap
     button 
       color: var(--blue)
-      flex: 1 0 20%
+      flex: 1 0 calc(20% - .6rem)
+    button:last-child
+      flex: 3 0 calc(20% - .6rem)
   .others 
     display: flex
     flex-wrap: wrap
     button
       color: var(--blue)
-      flex: 1 0 20%
+      flex: 1 0 calc(20% - .6rem)
+    button:last-child
+      flex: 3 0 calc(20% - .6rem)
+
+button
+  padding: .5rem 0rem
+  margin: .3rem .3rem
 
 .search-result
   > p
