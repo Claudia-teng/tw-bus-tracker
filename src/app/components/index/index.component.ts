@@ -11,7 +11,16 @@ export class IndexComponent {
   constructor(private router: Router) {}
 
   public navigateTo(page: string): void {
-    this.router.navigate(['city-bus/search']);
-
+    switch (page) {
+      case 'city-bus':
+        this.router.navigate(['city-bus/search']);
+        break;
+      case 'nearby':
+        this.router.navigate(['nearby/stop']);
+        break;
+      case 'intercity-bus':
+        this.router.navigate(['city-bus/search']);
+        break;
+    }
   }
 }

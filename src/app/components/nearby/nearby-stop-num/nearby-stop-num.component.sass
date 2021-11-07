@@ -1,0 +1,33 @@
+.topbar
+  display: flex
+  justify-content: space-around
+  align-items: center
+  height: 10%
+  padding-top: .5rem
+  img:nth-child(1)
+    width: .5rem
+    height: 1rem
+  img:nth-child(2)
+    width: 7rem
+    height: 3rem
+  > div
+    color: var(--white)
+
+.result
+  > div
+    margin: 0rem .5rem
+    padding: 1rem 1.5rem
+    border-radius: 5px
+    p
+      margin: 0
+    > p:nth-child(1)
+      font-size: 1rem
+      font-weight: bold
+      color: var(--blue)
+    > p:nth-child(2)
+      font-size: .9rem
+      color: var(--white)
+  > div:nth-child(odd)
+    background-color: var(--black)
+  > div:nth-child(even)
+    background-color: var(--gray)

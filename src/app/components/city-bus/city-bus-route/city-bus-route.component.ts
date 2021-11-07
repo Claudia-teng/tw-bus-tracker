@@ -16,6 +16,7 @@ export class CityBusRouteComponent {
       case 'index':
         this.router.navigate(['']);
         break;
+      // change to back page
       case 'search':
         this.router.navigate(['/city-bus/search']);
         break;

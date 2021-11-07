@@ -9,13 +9,17 @@ import { RouterModule } from '@angular/router';
 import { CityBusSearchComponent } from './components/city-bus/city-bus-search/city-bus-search.component';
 import { CityBusRouteComponent } from './components/city-bus/city-bus-route/city-bus-route.component';
 import { IndexComponent } from './components/index/index.component';
+import { NearbyStopComponent } from './components/nearby/nearby-stop/nearby-stop.component';
+import { NearbyStopNumComponent } from './components/nearby/nearby-stop-num/nearby-stop-num.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     CityBusRouteComponent,
-    CityBusSearchComponent
+    CityBusSearchComponent,
+    NearbyStopComponent,
+    NearbyStopNumComponent
   ],
   imports: [
     BrowserModule,
