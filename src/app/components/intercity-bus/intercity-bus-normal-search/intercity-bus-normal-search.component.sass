@@ -12,7 +12,7 @@
 .keyboard
   background-color: var(--gray)
   padding: 1rem
-  .number > div:nth-child(1)
+  div:nth-child(1)
     display: flex
     button:nth-child(1)
       display: flex
@@ -23,37 +23,17 @@
     button:nth-child(2)
       flex: 2
       color: var(--blue)
-  .number > div:nth-child(2)
+  div:nth-child(2)
     display: flex
     flex-wrap: wrap
     button
       flex: 1 0 calc(20% - .6rem)
-  .city
-    display: flex
-    flex-wrap: wrap
-    button 
-      color: var(--blue)
-      flex: 1 0 calc(20% - .6rem)
-    button:last-child
-      flex: 3 0 calc(20% - .6rem)
-  .others 
-    display: flex
-    flex-wrap: wrap
-    button
-      color: var(--blue)
-      flex: 1 0 calc(20% - .6rem)
-    button:last-child
-      flex: 3 0 calc(20% - .6rem)
 
 button
   padding: .5rem 0rem
   margin: .3rem .3rem
 
 .search-result
-  > p
-    font-size: 1rem
-    color: var(--white)
-    margin: .5rem 1rem
   > div
     margin: 0rem .5rem
     padding: 1rem 1.5rem
@@ -67,7 +47,7 @@ button
     > p:nth-child(2)
       font-size: .9rem
       color: var(--white)
-  > div:nth-child(even)
-    background-color: var(--black)
   > div:nth-child(odd)
+    background-color: var(--black)
+  > div:nth-child(even)
     background-color: var(--gray)

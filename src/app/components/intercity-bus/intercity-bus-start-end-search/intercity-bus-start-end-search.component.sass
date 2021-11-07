@@ -1,0 +1,52 @@
+.topbar
+  display: flex
+  justify-content: space-around
+  align-items: center
+  height: 10%
+  padding-top: .5rem
+  img:nth-child(1)
+    width: .5rem
+    height: 1rem
+  img:nth-child(2)
+    width: 7rem
+    height: 3rem
+
+.search
+  display: flex
+  justify-content: center
+  padding: .5rem 0rem 1rem 0rem
+  input
+    width: 35%
+    color: var(--blue)
+
+.keyboard
+  display: flex
+  flex-wrap: wrap
+  padding: 1rem
+  background-color: var(--gray)
+  button
+    padding: .5rem 0rem
+    margin: .3rem .3rem
+    color: var(--blue)
+    flex: 1 0 calc(20% - .6rem)
+  button:last-child
+    flex: 3 0 calc(20% - .6rem)
+
+.search-result
+  > div
+    margin: 0rem .5rem
+    padding: 1rem 1.5rem
+    border-radius: 5px
+    p
+      margin: 0
+    > p:nth-child(1)
+      font-size: 1rem
+      font-weight: bold
+      color: var(--blue)
+    > p:nth-child(2)
+      font-size: .9rem
+      color: var(--white)
+  > div:nth-child(odd)
+    background-color: var(--black)
+  > div:nth-child(even)
+    background-color: var(--gray)

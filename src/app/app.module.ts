@@ -11,6 +11,13 @@ import { CityBusRouteComponent } from './components/city-bus/city-bus-route/city
 import { IndexComponent } from './components/index/index.component';
 import { NearbyStopComponent } from './components/nearby/nearby-stop/nearby-stop.component';
 import { NearbyStopNumComponent } from './components/nearby/nearby-stop-num/nearby-stop-num.component';
+import { IntercityBusNormalSearchComponent } from './components/intercity-bus/intercity-bus-normal-search/intercity-bus-normal-search.component';
+import { IntercityBusStartEndSearchComponent } from './components/intercity-bus/intercity-bus-start-end-search/intercity-bus-start-end-search.component';
+import { IntercityBusPriceQueryComponent } from './components/intercity-bus/intercity-bus-price-query/intercity-bus-price-query.component';
+import { IntercityBusTimeTableComponent } from './components/intercity-bus/intercity-bus-time-table/intercity-bus-time-table.component';
+import { IntercityBusSelectDateComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-date/intercity-bus-select-date.component';
+import { IntercityBusSelectStopComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-stop/intercity-bus-select-stop.component';
+import { IntercityBusSelectTimeComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-time/intercity-bus-select-time.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +26,14 @@ import { NearbyStopNumComponent } from './components/nearby/nearby-stop-num/near
     CityBusRouteComponent,
     CityBusSearchComponent,
     NearbyStopComponent,
-    NearbyStopNumComponent
+    NearbyStopNumComponent,
+    IntercityBusNormalSearchComponent,
+    IntercityBusStartEndSearchComponent,
+    IntercityBusPriceQueryComponent,
+    IntercityBusTimeTableComponent,
+    IntercityBusSelectTimeComponent,
+    IntercityBusSelectDateComponent,
+    IntercityBusSelectStopComponent
   ],
   imports: [
     BrowserModule,

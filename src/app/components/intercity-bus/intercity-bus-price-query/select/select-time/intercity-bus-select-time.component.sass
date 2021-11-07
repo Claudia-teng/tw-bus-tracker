@@ -1,0 +1,30 @@
+.background
+  width: 100vw
+  height: 100vh
+  background-color: var(--gray)
+  display: flex
+  justify-content: center
+
+.box
+  padding: 2rem 1.5rem
+  background-color: var(--black)
+  font-size: 1rem
+  border-radius: 5px
+  width: 70%
+  height: 75%
+  margin-top: 15%
+  overflow: scroll
+  > div:nth-child(1)
+    color: var(--white)
+    margin-bottom: 1rem
+  .button-area
+    display: flex
+    flex-wrap: wrap
+    button
+      padding: .5rem
+      margin: .5rem .3rem
+      color: var(--blue)
+      flex: 1 0 calc(33% - .6rem)
+    button:last-child
+      color: var(--white)
+      width: 100%

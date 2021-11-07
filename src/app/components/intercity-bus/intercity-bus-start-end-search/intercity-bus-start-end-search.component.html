@@ -1,0 +1,37 @@
+<div class="topbar">
+  <img src="assets/back-arrow.png"
+  (click)="navigateToNormalSearch()">
+  <img src="assets/topbar-logo.png"
+      (click)="navigateToIndex()">
+  <div></div>
+</div>
+
+<div class="search">
+  <input placeholder="選擇出發縣市">
+  <img src="assets/swap-icon.png">
+  <input placeholder="選擇到達縣市">
+</div>
+
+<ng-container *ngIf="searchMode===true";>
+  <div class="keyboard">
+    <button *ngFor="let button of keyboardCityBtns">
+      {{ button.label }}
+    </button>
+    <button (click)="setSearchCity()">
+      設定
+    </button>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="searchMode===false">
+  <div class="search-result">
+    <div (click)="navigateToPriceQuery()">
+      <p>0968</p>
+      <p>大竹消防隊-庫倫街口</p>
+    </div>
+    <div (click)="navigateToPriceQuery()">
+      <p>0968</p>
+      <p>大竹消防隊-庫倫街口</p>
+    </div>
+  </div>
+</ng-container>
