@@ -1,18 +1,28 @@
 .topbar
   display: flex
-  justify-content: space-around
   align-items: center
   height: 10%
   padding-top: .5rem
-  img:nth-child(1)
+  div
+    flex: 1
+  div:nth-child(1) > img
     width: .5rem
     height: 1rem
-  img:nth-child(2)
-    width: 7rem
-    height: 3rem
-  img:nth-child(3)
-    width: 1.5rem
-    height: 1.5rem
+    margin-left: 20%
+  div:nth-child(2) 
+    display: flex
+    justify-content: center
+    > img
+      width: 7rem
+      height: 3rem
+  div:nth-child(3) 
+    display: flex
+    justify-content: flex-end
+    > img
+      width: 1.5rem
+      height: 1.5rem
+      margin-right: 20%
+
 
 .direction
   display: flex

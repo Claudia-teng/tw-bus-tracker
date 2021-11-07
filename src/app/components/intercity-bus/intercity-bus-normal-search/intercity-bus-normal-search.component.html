@@ -1,42 +1,44 @@
-<div class="topbar">
-  <img src="assets/topbar-logo.png"
-  (click)="navigateToIndex()">
-  <input placeholder="選擇路線或手動輸入關鍵字">
+<div class="background">
+  <div class="topbar">
+    <img src="assets/topbar-logo.png"
+    (click)="navigateToIndex()">
+    <input placeholder="選擇路線或手動輸入關鍵字">
+  </div>
+
+  <ng-container *ngIf="searchMode===true">
+    <div class="keyboard">
+      <div>
+        <button (click)="navigateToStartEndSearch()">
+          <img src="assets/navigate-icon.png">
+          以起迄地區搜尋
+        </button>
+        <button>
+          手動輸入
+        </button>
+      </div>
+      <div>
+        <button *ngFor="let button of keyboardNumBtns"
+          [ngStyle]="{color: button.textColor}">
+          {{ button.label }}
+        </button>
+        <button>
+          <img src="assets/delete-icon.png">
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="searchMode===false">
+    <div class="search-result">
+      <div (click)="navigateToPriceQuery()">
+        <p>1032</p>
+        <p>基隆 - 板橋</p>
+      </div>
+      <div (click)="navigateToPriceQuery()">
+        <p>1032</p>
+        <p>基隆 - 板橋</p>
+      </div>
+    </div>
+  </ng-container>
 </div>
-
-<ng-container *ngIf="searchMode===true">
-  <div class="keyboard">
-    <div>
-      <button (click)="navigateToStartEndSearch()">
-        <img src="assets/navigate-icon.png">
-        以起迄地區搜尋
-      </button>
-      <button>
-        手動輸入
-      </button>
-    </div>
-    <div>
-      <button *ngFor="let button of keyboardNumBtns"
-        [ngStyle]="{color: button.textColor}">
-        {{ button.label }}
-      </button>
-      <button>
-        <img src="assets/delete-icon.png">
-      </button>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="searchMode===false">
-  <div class="search-result">
-    <div (click)="navigateToPriceQuery()">
-      <p>1032</p>
-      <p>基隆 - 板橋</p>
-    </div>
-    <div (click)="navigateToPriceQuery()">
-      <p>1032</p>
-      <p>基隆 - 板橋</p>
-    </div>
-  </div>
-</ng-container>
 

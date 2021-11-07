@@ -4,12 +4,18 @@
   align-items: center
   height: 10%
   padding-top: .5rem
-  img:nth-child(1)
+  div:nth-child(1) > img
     width: .5rem
     height: 1rem
-  img:nth-child(2)
-    width: 7rem
-    height: 3rem
+    margin-left: 20%
+  div:nth-child(2) 
+    display: flex
+    justify-content: center
+    > img
+      width: 7rem
+      height: 3rem
+  div
+    flex: 1
 
 .search
   display: flex

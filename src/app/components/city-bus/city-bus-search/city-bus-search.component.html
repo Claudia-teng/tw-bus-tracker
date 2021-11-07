@@ -1,78 +1,79 @@
-<div class="topbar">
-  <img src="assets/topbar-logo.png"
-  (click)="navigateToIndex()">
-  <input placeholder="選擇路線或手動輸入關鍵字">
-</div>
+<div [ngClass]="{background: searchMode}">
+  <div class="topbar">
+    <img src="assets/topbar-logo.png"
+    (click)="navigateToIndex()">
+    <input placeholder="選擇路線或手動輸入關鍵字">
+  </div>
 
-<ng-container *ngIf="searchMode===true">
-  <div class="keyboard">
-    <div *ngIf="keyboardMode==='number'"
-          class="number">
-      <div>
-        <button (click)="this.keyboardMode='city'">
-          <img src="assets/navigate-icon.png">
-          選擇縣市
-        </button>
-        <button>
-          手動輸入
-        </button>
-      </div>
-      <div>
-        <ng-container *ngFor="let button of keyboardNumBtns">
-          <ng-container [ngSwitch]="button.label">
-            <ng-container *ngSwitchCase="'更多'">
-              <button [ngStyle]="{color: button.textColor}"
-                      (click)="this.keyboardMode='others'">
-                      {{ button.label }}
-              </button>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              <button [ngStyle]="{color: button.textColor}">
-                {{ button.label }}
-              </button>
+  <ng-container *ngIf="searchMode===true">
+    <div class="keyboard">
+      <div *ngIf="keyboardMode==='number'"
+            class="number">
+        <div>
+          <button (click)="this.keyboardMode='city'">
+            <img src="assets/navigate-icon.png">
+            選擇縣市
+          </button>
+          <button>
+            手動輸入
+          </button>
+        </div>
+        <div>
+          <ng-container *ngFor="let button of keyboardNumBtns">
+            <ng-container [ngSwitch]="button.label">
+              <ng-container *ngSwitchCase="'更多'">
+                <button [ngStyle]="{color: button.textColor}"
+                        (click)="this.keyboardMode='others'">
+                        {{ button.label }}
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <button [ngStyle]="{color: button.textColor}">
+                  {{ button.label }}
+                </button>
+              </ng-container>
             </ng-container>
           </ng-container>
-        </ng-container>
-        <button>
-          <img src="assets/delete-icon.png">
+          <button>
+            <img src="assets/delete-icon.png">
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="keyboardMode==='city'"
+            class="city" >
+        <button *ngFor="let button of keyboardCityBtns">
+          {{ button.label }}
+        </button>
+        <button (click)="setSearchCity()">
+          設定
+        </button>
+      </div>
+
+      <div *ngIf="keyboardMode==='others'"
+            class="others" >
+        <button *ngFor="let button of keyboardOthersBtns"
+                (click)="onSearch()">
+          {{ button.label }}
+        </button>
+        <button (click)="this.keyboardMode='number'">
+          回上一頁
         </button>
       </div>
     </div>
+  </ng-container>
 
-    <div *ngIf="keyboardMode==='city'"
-          class="city" >
-      <button *ngFor="let button of keyboardCityBtns">
-        {{ button.label }}
-      </button>
-      <button (click)="setSearchCity()">
-        設定
-      </button>
+  <ng-container *ngIf="searchMode===false">
+    <div class="search-result">
+      <p>台北市</p>
+      <div (click)="navigateToRoute()">
+        <p>紅10</p>
+        <p>台北海大 - 劍潭捷運站</p>
+      </div>
+      <div>
+        <p>紅10</p>
+        <p>台北海大 - 劍潭捷運站</p>
+      </div>
     </div>
-
-    <div *ngIf="keyboardMode==='others'"
-          class="others" >
-      <button *ngFor="let button of keyboardOthersBtns"
-              (click)="onSearch()">
-        {{ button.label }}
-      </button>
-      <button (click)="this.keyboardMode='number'">
-        回上一頁
-      </button>
-    </div>
-  </div>
-</ng-container>
-
-<ng-container *ngIf="searchMode===false">
-  <div class="search-result">
-    <p>台北市</p>
-    <div (click)="navigateToRoute()">
-      <p>紅10</p>
-      <p>台北海大 - 劍潭捷運站</p>
-    </div>
-    <div>
-      <p>紅10</p>
-      <p>台北海大 - 劍潭捷運站</p>
-    </div>
-  </div>
-</ng-container>
-
+  </ng-container>
+</div>
