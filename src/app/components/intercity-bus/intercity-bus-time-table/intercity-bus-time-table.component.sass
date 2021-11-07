@@ -5,7 +5,6 @@
 
 .topbar
   display: flex
-  justify-content: space-around
   align-items: center
   background-color: var(--black)
   height: 10%
@@ -13,6 +12,11 @@
   img:nth-child(1)
     width: .5rem
     height: 1rem
+    margin-left: 25%
+  > img, > div
+    flex: 1
+  > input 
+    flex: 1.5
 
 .direction
   display: flex

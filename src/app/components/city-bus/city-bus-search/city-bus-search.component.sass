@@ -1,9 +1,7 @@
 .background
   width: 100%
   height: 100%
-  display: flex
-  flex-direction: column
-  justify-content: space-between
+  position: relative
   
 .topbar
   display: flex
@@ -19,6 +17,10 @@
 .keyboard
   background-color: var(--gray)
   padding: 1rem
+  width: 100%
+  position: absolute
+  bottom: 0
+  animation: showKeyboard .5s
   .number > div:nth-child(1)
     display: flex
     button:nth-child(1)

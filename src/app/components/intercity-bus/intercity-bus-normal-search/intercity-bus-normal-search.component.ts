@@ -31,7 +31,7 @@ export class IntercityBusNormalSearchComponent {
   }
 
   public setSearchCity(): void {
-    this.keyboardMode="number"
+    this.keyboardMode = "number";
   }
 
   public onSearch(): void {

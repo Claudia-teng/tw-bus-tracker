@@ -17,7 +17,7 @@ export class CityBusSearchComponent {
   public keyboardCityBtns: Array<KeyboardBtns> = cityBusCity;
   public keyboardOthersBtns: Array<KeyboardBtns> = cityBusOthers;
   public keyboardMode: string = 'number';
-  public searchMode: boolean = false;
+  public searchMode: boolean = true;
 
   public navigateToIndex(): void {
     this.router.navigate([''])

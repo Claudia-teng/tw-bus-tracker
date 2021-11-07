@@ -11,7 +11,7 @@ import { cityBusCity } from '../keyboard-list/keyboard-list';
 export class IntercityBusStartEndSearchComponent {
 
   public keyboardCityBtns: Array<KeyboardBtns> = cityBusCity;
-  public searchMode: boolean = false;
+  public searchMode: boolean = true;
 
   constructor(private router: Router) {}
 
@@ -28,7 +28,7 @@ export class IntercityBusStartEndSearchComponent {
   }
 
   public setSearchCity(): void {
-    
+    this.searchMode = false;
   }
 
 }
