@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { BusN1EstimateTime } from 'src/app/models';
+import { CityBusService } from 'src/app/service';
 
 @Component({
   selector: 'city-bus-route',
@@ -8,8 +10,27 @@ import { Router } from '@angular/router';
 })
 export class CityBusRouteComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private cityBusService: CityBusService) {}
+
   public isReturnDirection: boolean = false;
+  public city: string;
+  public routeName: string;
+  public stopResult: Array<BusN1EstimateTime>;
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(
+      (params: Params) => {
+        this.city = params.city,
+        this.routeName = params.route;
+      }
+    );
+
+    this.cityBusService.getEstimatedTimeByRoute(this.city, this.routeName).subscribe(res => {
+      this.stopResult = res;
+    })
+  }
 
   public navigateTo(page: string): void {
     switch(page) {

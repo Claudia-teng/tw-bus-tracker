@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { KeyboardBtns } from 'src/app/models';
+import { BusRoute, KeyboardBtns } from 'src/app/models';
+import { CityBusService } from 'src/app/service';
+
 import { cityBusNumber, cityBusCity, cityBusOthers } from './keyboard-list/keyboard-list';
 
 @Component({
@@ -16,7 +18,8 @@ export class CityBusSearchComponent {
     this.searchElement.nativeElement.blur();
   } 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private cityBusService: CityBusService) {}
 
   public keyboardNumBtns: Array<KeyboardBtns> = cityBusNumber;
   public keyboardCityBtns: Array<KeyboardBtns> = cityBusCity;
@@ -25,7 +28,9 @@ export class CityBusSearchComponent {
   public searchMode: boolean = true;
 
   public searchInput: string = '';
-  public selectedCity: KeyboardBtns = { label: "台北市", value: "台北市"};
+  public selectedCity: KeyboardBtns;
+  public displaySelectCity: string;
+  public busResult: Array<BusRoute>;
 
   public navigateToIndex(): void {
     this.router.navigate([''])
@@ -41,15 +46,25 @@ export class CityBusSearchComponent {
 
   public onSetSearchCity(): void {
     this.keyboardMode="number";
-    this.searchInput = '';
+    this.displaySelectCity = this.selectedCity.label
+    this.cityBusService.getBusByCity(this.selectedCity.value).subscribe(res => {
+      this.busResult = res;
+    });
   }
 
   public onSearch(input: string): void {
     this.searchInput += input;
   }
 
-  public navigateToRoute(): void {
-    this.router.navigate(['city-bus/route'])
+  public navigateToRoute(route: string): void {
+    this.router.navigate(['city-bus/route'], 
+      { queryParams: 
+        {
+          city: this.selectedCity.value,
+          route: route
+        }
+      }
+    )
   }
 
   public onClearInput(): void {

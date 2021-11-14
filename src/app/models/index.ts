@@ -1,1 +1,1 @@
-export * from './select-item.model';
+export * from './city-bus';

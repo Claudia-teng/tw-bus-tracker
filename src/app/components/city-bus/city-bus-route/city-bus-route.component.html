@@ -30,33 +30,43 @@
     <span>3</span>
     秒前更新
   </div>
-  <div class="card no-depart">
-    <div>未發車</div>
-    <div>小北街</div>
-    <div>619-U3</div>
-    <div></div>
-    <div></div>
+  <div class="card-area">
+    <ng-container *ngFor="let stop of stopResult">
+      <div class="card no-depart">
+        <div>未發車</div>
+        <div>{{ stop.StopName.Zh_tw }}</div>
+        <div>{{ stop.Estimates?.PlateNumb }}</div>
+        <div></div>
+        <div></div>
+      </div>
+    </ng-container>
+    <div class="card no-depart">
+      <div>未發車</div>
+      <div>小北街</div>
+      <div>619-U3</div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="card coming">
+      <div>進站中</div>
+      <div>小北街</div>
+      <div>619-U3</div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="card waiting">
+      <div>4分</div>
+      <div>小北街</div>
+      <div>619-U3</div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="card departing">
+      <div>離站中</div>
+      <div>小北街</div>
+      <div>619-U3</div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
-  <div class="card coming">
-    <div>進站中</div>
-    <div>小北街</div>
-    <div>619-U3</div>
-    <div></div>
-    <div></div>
-  </div>
-  <div class="card waiting">
-    <div>4分</div>
-    <div>小北街</div>
-    <div>619-U3</div>
-    <div></div>
-    <div></div>
-  </div>
-  <div class="card departing">
-    <div>離站中</div>
-    <div>小北街</div>
-    <div>619-U3</div>
-    <div></div>
-    <div></div>
-  </div>
-
 </div>

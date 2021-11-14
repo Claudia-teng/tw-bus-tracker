@@ -1,3 +1,5 @@
+@import './styles/_mixin' 
+
 .backgroud
   width: 100vw
   height: 100vh
@@ -9,6 +11,6 @@
   width: 100vw
   height: 100vh
 
-@media only screen and (min-width: 768px) 
+@include breakpoint(pad)
   .container
     width: 768px

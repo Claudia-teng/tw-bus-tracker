@@ -15,7 +15,7 @@
       <div>
         <button (click)="this.keyboardMode='city'">
           <img src="assets/navigate-icon.png">
-          {{selectedCity.label}}
+          {{ selectedCity?.label ? selectedCity?.label : "選擇縣市" }}
         </button>
         <button>
           手動輸入
@@ -54,7 +54,7 @@
           class="city" >
       <button *ngFor="let button of keyboardCityBtns"
               (click)="onSelectCity(button)"
-              [ngClass]="selectedCity.label === button.label ? 'selected-button' : ''">
+              [ngClass]="selectedCity?.label === button.label ? 'selected-button' : ''">
         {{ button.label }}
       </button>
       <button (click)="onSetSearchCity()">
@@ -76,47 +76,14 @@
 
   <ng-container>
     <div class="search-result">
-      <p>台北市</p>
+      <p *ngIf="displaySelectCity">
+        {{ displaySelectCity }}
+      </p>
       <div class="card-area" (scroll)="onScrollEvent()">
-        <div (click)="navigateToRoute()">
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
-        </div>
-        <div>
-          <p>紅10</p>
-          <p>台北海大 - 劍潭捷運站</p>
+        <div *ngFor="let bus of busResult"
+          (click)="navigateToRoute(bus.RouteName.Zh_tw)">
+          <p>{{ bus.RouteName.Zh_tw }}</p>
+          <p>{{ bus.DepartureStopNameZh }} - {{ bus.DestinationStopNameZh }}</p>
         </div>
       </div>
     </div>

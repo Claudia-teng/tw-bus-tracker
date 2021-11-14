@@ -63,91 +63,91 @@ export const cityBusNumber: Array<KeyboardBtns> = [
 export const cityBusCity: Array<KeyboardBtns> = [
   {
     label: "台北市",
-    value: "台北市"
+    value: "Taipei"
   },
   {
     label: "新北市",
-    value: "新北市"
+    value: "NewTaipei"
   },
   {
     label: "基隆市",
-    value: "台北市"
+    value: "Keelung"
   },
   {
     label: "桃園市",
-    value: "台北市"
+    value: "Taoyuan"
   },
   {
     label: "新竹市",
-    value: "台北市"
+    value: "Hsinchu"
   },
   {
     label: "新竹縣",
-    value: "台北市"
+    value: "HsinchuCounty"
   },
   {
     label: "苗栗縣",
-    value: "台北市"
+    value: "MiaoliCounty"
   },
   {
     label: "台中市",
-    value: "台北市"
+    value: "Taichung"
   },
   {
     label: "南投縣",
-    value: "台北市"
+    value: "NantouCounty"
   },
   {
     label: "彰化縣",
-    value: "台北市"
+    value: "ChanghuaCounty"
   },
   {
     label: "雲林縣",
-    value: "台北市"
+    value: "YunlinCounty"
   },
   {
     label: "嘉義市",
-    value: "台北市"
+    value: "Chiayi"
   },
   {
     label: "嘉義縣",
-    value: "台北市"
+    value: "ChiayiCounty"
   },
   {
     label: "台南市",
-    value: "台北市"
+    value: "Tainan"
   },
   {
     label: "高雄市",
-    value: "台北市"
+    value: "Kaohsiung"
   },
   {
     label: "屏東縣",
-    value: "台北市"
+    value: "PingtungCounty"
   },
   {
     label: "台東縣",
-    value: "台北市"
+    value: "TaitungCounty"
   },
   {
     label: "花蓮縣",
-    value: "台北市"
+    value: "HualienCounty"
   },
   {
     label: "宜蘭縣",
-    value: "台北市"
+    value: "YilanCounty"
   },
   {
     label: "澎湖縣",
-    value: "台北市"
+    value: "PenghuCounty"
   },
   {
     label: "金門縣",
-    value: "台北市"
+    value: "KinmenCounty"
   },
   {
     label: "連江縣",
-    value: "台北市"
+    value: "LienchiangCounty"
   }
 ]
 

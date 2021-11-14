@@ -46,9 +46,14 @@
     color: var(--blue)
     padding: 1rem 1rem .5rem 1rem
     font-size: .8rem
+  .card-area
+    overflow-y: scroll
+    height: 70vh
+    &::-webkit-scrollbar
+      display: none
   .card
     display: grid
-    grid-template-columns: 0.5fr 1.5fr 0.7fr 0.01fr 0.3fr
+    grid-template-columns: 0.5fr 1.5fr 0.7fr 0.005fr 0.3fr
     align-items: center
     > div:nth-child(1)
       width: 5rem
@@ -70,7 +75,7 @@
         border-radius: 50%
         box-shadow: none
         position: absolute
-        left: 100%
+        left: 101%
         top: 50%
         transform: translate(-50%, -50%)
     > div:nth-child(4)
@@ -94,7 +99,7 @@
       > div:nth-child(3)::after
         background: var(--blue)
         box-shadow: 0px 0px 6px #1CC8EE
-  .card:nth-child(2)
+  .card:nth-child(1)
     > div:nth-child(4)
       height: 50%
       margin-top: auto
