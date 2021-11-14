@@ -2,7 +2,8 @@
   <div class="topbar">
     <img src="assets/topbar-logo.png"
     (click)="navigateToIndex()">
-    <input placeholder="選擇路線或手動輸入關鍵字">
+    <input placeholder="選擇路線或手動輸入關鍵字" 
+          [(ngModel)]="searchInput">
   </div>
 
   <ng-container *ngIf="searchMode===true">
@@ -12,7 +13,7 @@
         <div>
           <button (click)="this.keyboardMode='city'">
             <img src="assets/navigate-icon.png">
-            選擇縣市
+            {{selectedCity.label}}
           </button>
           <button>
             手動輸入
@@ -27,14 +28,21 @@
                         {{ button.label }}
                 </button>
               </ng-container>
+              <ng-container *ngSwitchCase="'C'">
+                <button [ngStyle]="{color: button.textColor}"
+                        (click)="onClearInput()">
+                        {{ button.label }}
+                </button>
+              </ng-container>
               <ng-container *ngSwitchDefault>
-                <button [ngStyle]="{color: button.textColor}">
+                <button [ngStyle]="{color: button.textColor}"
+                  (click)="onSearch(button.label)">
                   {{ button.label }}
                 </button>
               </ng-container>
             </ng-container>
           </ng-container>
-          <button>
+          <button (click)="onDeleteSingle()">
             <img src="assets/delete-icon.png">
           </button>
         </div>
@@ -42,7 +50,9 @@
 
       <div *ngIf="keyboardMode==='city'"
             class="city" >
-        <button *ngFor="let button of keyboardCityBtns">
+        <button *ngFor="let button of keyboardCityBtns"
+                (click)="onSelectCity(button)"
+                [ngClass]="selectedCity.label === button.label ? 'selected-button' : ''">
           {{ button.label }}
         </button>
         <button (click)="setSearchCity()">
@@ -53,7 +63,7 @@
       <div *ngIf="keyboardMode==='others'"
             class="others" >
         <button *ngFor="let button of keyboardOthersBtns"
-                (click)="onSearch()">
+                (click)="onSearch(button.label)">
           {{ button.label }}
         </button>
         <button (click)="this.keyboardMode='number'">

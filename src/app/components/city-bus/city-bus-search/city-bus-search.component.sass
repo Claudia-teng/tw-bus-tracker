@@ -17,7 +17,7 @@
 .keyboard
   background-color: var(--gray)
   padding: 1rem
-  width: 100%
+  // width: 100%
   position: absolute
   bottom: 0
   animation: showKeyboard .5s
@@ -40,10 +40,17 @@
   .city
     display: flex
     flex-wrap: wrap
-    button 
+    button
       color: var(--blue)
+      background: var(--gray)
+      flex: 1 0 calc(20% - .6rem)
+    .selected-button
+      color: var(--gray)
+      background: var(--blue)
       flex: 1 0 calc(20% - .6rem)
     button:last-child
+      color: var(--blue)
+      background: var(--gray)
       flex: 3 0 calc(20% - .6rem)
   .others 
     display: flex

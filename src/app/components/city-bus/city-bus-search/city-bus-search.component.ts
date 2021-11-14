@@ -19,19 +19,34 @@ export class CityBusSearchComponent {
   public keyboardMode: string = 'number';
   public searchMode: boolean = true;
 
+  public searchInput: string = '';
+  public selectedCity: KeyboardBtns = { label: "台北市", value: "台北市"};
+
   public navigateToIndex(): void {
     this.router.navigate([''])
+  }
+
+  public onSelectCity(city: KeyboardBtns): void {
+    this.selectedCity = city
   }
 
   public setSearchCity(): void {
     this.keyboardMode="number"
   }
 
-  public onSearch(): void {
-
+  public onSearch(input: string): void {
+    this.searchInput += input;
   }
 
   public navigateToRoute(): void {
     this.router.navigate(['city-bus/route'])
+  }
+
+  public onClearInput(): void {
+    this.searchInput = '';
+  }
+
+  public onDeleteSingle(): void {
+    this.searchInput = this.searchInput.slice(0, -1); 
   }
 }
