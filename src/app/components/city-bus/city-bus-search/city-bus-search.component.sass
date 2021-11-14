@@ -18,7 +18,8 @@
 .keyboard
   background-color: var(--gray)
   padding: 1rem
-  // width: 100%
+  width: 100%
+  box-sizing: border-box
   position: absolute
   &.show
     bottom: 0px
@@ -40,31 +41,32 @@
   .number > div:nth-child(2)
     display: flex
     flex-wrap: wrap
+    // btn-margin: .3rem / btn-per-line: 5
     button
-      flex: 1 0 calc(20% - .6rem)
+      width: calc((100% - 0.3rem*10) / 5)
   .city
     display: flex
     flex-wrap: wrap
     button
       color: var(--blue)
       background: var(--gray)
-      flex: 1 0 calc(20% - .6rem)
+      width: calc((100% - 0.3rem*10) / 5)
     .selected-button
       color: var(--gray)
       background: var(--blue)
-      flex: 1 0 calc(20% - .6rem)
+      width: calc((100% - 0.3rem*10) / 5)
     button:last-child
       color: var(--blue)
       background: var(--gray)
-      flex: 3 0 calc(20% - .6rem)
+      width: calc((100% - 0.3rem*10) / 5 * 3 + (0.3rem * 4))
   .others 
     display: flex
     flex-wrap: wrap
     button
       color: var(--blue)
-      flex: 1 0 calc(20% - .6rem)
+      width: calc((100% - 0.3rem*10) / 5)
     button:last-child
-      flex: 3 0 calc(20% - .6rem)
+      width: calc((100% - 0.3rem*10) / 5 * 3 + (0.3rem * 4))
 
 button
   padding: .5rem 0rem
