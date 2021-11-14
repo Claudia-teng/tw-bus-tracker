@@ -36,11 +36,12 @@ export class CityBusSearchComponent {
   }
 
   public onSelectCity(city: KeyboardBtns): void {
-    this.selectedCity = city
+    this.selectedCity = city;
   }
 
-  public setSearchCity(): void {
-    this.keyboardMode="number"
+  public onSetSearchCity(): void {
+    this.keyboardMode="number";
+    this.searchInput = '';
   }
 
   public onSearch(input: string): void {

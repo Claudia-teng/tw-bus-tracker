@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CityBusMapComponent } from './components/city-bus/city-bus-map/city-bus-map.component';
 import { CityBusRouteComponent } from './components/city-bus/city-bus-route/city-bus-route.component';
 import { CityBusSearchComponent } from './components/city-bus/city-bus-search/city-bus-search.component';
 import { IndexComponent } from './components/index/index.component';
@@ -16,6 +17,7 @@ export const appRoutes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'city-bus/search', component: CityBusSearchComponent },
   { path: 'city-bus/route', component: CityBusRouteComponent },
+  { path: 'city-bus/map', component: CityBusMapComponent },
   { path: 'nearby/stop', component: NearbyStopComponent },
   { path: 'nearby/stop-num', component: NearbyStopNumComponent },
   { path: 'intercity-bus/normal-search', component: IntercityBusNormalSearchComponent },

@@ -11,7 +11,6 @@ export class CityBusRouteComponent {
   constructor(private router: Router) {}
   public isReturnDirection: boolean = false;
 
-
   public navigateTo(page: string): void {
     switch(page) {
       case 'index':
@@ -25,7 +24,10 @@ export class CityBusRouteComponent {
         this.router.navigate(['/city-bus/map']);
         break;
     }
-    
+  }
+
+  public navigateToMap(): void {
+    this.router.navigate(['city-bus/map'])
   }
 
   public onSetDirection(direction: string): void {

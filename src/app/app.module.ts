@@ -2,10 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { appRoutes } from './app.routing';
 
-import { AppComponent } from './app.component';
+// Angular
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
+// PrimeNG
+import { GMapModule } from 'primeng/gmap';
+
+// Component
+import { AppComponent } from './app.component';
 import { CityBusSearchComponent } from './components/city-bus/city-bus-search/city-bus-search.component';
 import { CityBusRouteComponent } from './components/city-bus/city-bus-route/city-bus-route.component';
 import { IndexComponent } from './components/index/index.component';
@@ -18,7 +24,10 @@ import { IntercityBusTimeTableComponent } from './components/intercity-bus/inter
 import { IntercityBusSelectDateComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-date/intercity-bus-select-date.component';
 import { IntercityBusSelectStopComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-stop/intercity-bus-select-stop.component';
 import { IntercityBusSelectTimeComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-time/intercity-bus-select-time.component';
-import { FormsModule } from '@angular/forms';
+import { CityBusMapComponent } from './components/city-bus/city-bus-map/city-bus-map.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -26,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     IndexComponent,
     CityBusRouteComponent,
     CityBusSearchComponent,
+    CityBusMapComponent,
     NearbyStopComponent,
     NearbyStopNumComponent,
     IntercityBusNormalSearchComponent,
@@ -40,6 +50,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    GMapModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
