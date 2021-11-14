@@ -13,11 +13,13 @@
   </div>
 </div>
 <div class="direction">
-  <div>
+  <div [ngClass]="{'selected-direction': !isReturnDirection}"
+        (click)="onSetDirection('go')">
     <span>往</span>
     <span>捷運劍潭站</span>
   </div>
-  <div>
+  <div [ngClass]="{'selected-direction': isReturnDirection}"
+        (click)="onSetDirection('return')">
     <span>往</span>
     <span>台北海大</span>
   </div>
@@ -31,18 +33,30 @@
   <div class="card no-depart">
     <div>未發車</div>
     <div>小北街</div>
+    <div>619-U3</div>
+    <div></div>
+    <div></div>
   </div>
   <div class="card coming">
     <div>進站中</div>
     <div>小北街</div>
+    <div>619-U3</div>
+    <div></div>
+    <div></div>
   </div>
   <div class="card waiting">
     <div>4分</div>
     <div>小北街</div>
+    <div>619-U3</div>
+    <div></div>
+    <div></div>
   </div>
   <div class="card departing">
     <div>離站中</div>
     <div>小北街</div>
+    <div>619-U3</div>
+    <div></div>
+    <div></div>
   </div>
 
 </div>

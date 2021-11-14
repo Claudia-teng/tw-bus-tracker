@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class CityBusRouteComponent {
 
   constructor(private router: Router) {}
+  public isReturnDirection: boolean = false;
 
 
   public navigateTo(page: string): void {
@@ -25,5 +26,10 @@ export class CityBusRouteComponent {
         break;
     }
     
+  }
+
+  public onSetDirection(direction: string): void {
+    this.isReturnDirection = direction === 'go' ? false : true;
+
   }
 }

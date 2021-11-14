@@ -30,7 +30,8 @@
     flex: 1
     padding: 1rem
     text-align: center
-    box-shadow: 0 6px 2px -2px var(--blue)
+    &.selected-direction
+      box-shadow: 0 6px 2px -2px var(--blue)
     > span:nth-child(1)
       color: var(--blue)
       margin-right: .3rem
@@ -43,26 +44,42 @@
   > div:nth-child(1)
     text-align: right
     color: var(--blue)
-    padding: 1rem 1rem 0rem 1rem
+    padding: 1rem 1rem .5rem 1rem
     font-size: .8rem
   .card
-    display: flex
+    display: grid
+    grid-template-columns: 0.5fr 1.5fr 0.7fr 0.01fr 0.2fr
     align-items: center
-    margin: 1rem 0rem
     > div:nth-child(1)
       width: 5rem
       padding: .7rem 0rem
-      margin: 0rem 1rem
+      margin: .5rem 1rem
       border-radius: 12px
       text-align: center 
     > div:nth-child(2)
       color: var(--white)
+    > div:nth-child(3)
+      color: var(--blue)
+      position: relative
+      &::after
+        content: ""
+        width: 1rem
+        height: 1rem
+        background: var(--gray)
+        border: 1px solid var(--blue)
+        border-radius: 50%
+        box-shadow: none
+        position: absolute
+        left: 100%
+        top: 50%
+        transform: translate(-50%, -50%)
+    > div:nth-child(4)
+      height: 100%
+      background-color: var(--blue)
+      box-shadow: 0px 0px 6px #1CC8EE
     &.no-depart > div:nth-child(1)
       color: var(--gray-light)
       background-color: var(--black)
-    &.coming > div:nth-child(1)
-      color: var(--black)
-      background-color: var(--blue)
     &.waiting > div:nth-child(1)
       color: var(--blue)
       background-color: var(--black)
@@ -70,3 +87,18 @@
     &.departing > div:nth-child(1)
       color: var(--white)
       background-color: var(--gray-light)
+    &.coming 
+      > div:nth-child(1)
+        color: var(--black)
+        background-color: var(--blue)
+      > div:nth-child(3)::after
+        background: var(--blue)
+        box-shadow: 0px 0px 6px #1CC8EE
+  .card:nth-child(2)
+    > div:nth-child(4)
+      height: 50%
+      margin-top: auto
+  .card:last-child
+    > div:nth-child(4)
+      height: 50%
+      margin-bottom: auto
