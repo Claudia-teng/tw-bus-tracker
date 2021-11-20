@@ -3,9 +3,10 @@
     <img src="assets/topbar-logo.png"
     (click)="navigateToIndex()">
     <input #search
-          placeholder="選擇路線或手動輸入關鍵字" 
+          placeholder="請用鍵盤輸入關鍵字" 
           [(ngModel)]="searchInput"
-          (focus)="onInputFocus()">
+          (focus)="onInputFocus()"
+          readonly>
   </div>
 
   <div class="keyboard"
@@ -16,9 +17,6 @@
         <button (click)="this.keyboardMode='city'">
           <img src="assets/navigate-icon.png">
           {{ selectedCity ? selectedCity.label : "請先選擇縣市" }}
-        </button>
-        <button>
-          手動輸入
         </button>
       </div>
       <div>

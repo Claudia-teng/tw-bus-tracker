@@ -195,9 +195,5 @@ export const cityBusOthers: Array<KeyboardBtns> = [
   {
     label: "市民",
     value: "市民"
-  },
-  {
-    label: "其他",
-    value: "其他"
   }
 ]

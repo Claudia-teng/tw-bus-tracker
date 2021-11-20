@@ -58,10 +58,8 @@ export class CityBusRouteComponent {
   
   private setEstimatedTimeInfo(changeDirection?:boolean): void {
     this.cityBusService.getEstimatedTimeByRoute(this.city, this.routeName).subscribe(res => {
-      setTimeout(() => {
-        this.loading = false;
-        if (!changeDirection) this.handleCountdown();
-      }, 800);
+      setTimeout(() => this.loading = false, 800);
+      if (!changeDirection) this.handleCountdown();
       res.forEach(busN1EstimateTime => {
         this.stopResult.forEach((stop) => {
           if (stop.StopUID === busN1EstimateTime.StopUID) {
@@ -95,7 +93,7 @@ export class CityBusRouteComponent {
       } else {
         this.secondCountdown = 0;
         clearInterval(this.timerId);
-        this.handleCountdown();
+        this.setEstimatedTimeInfo();
       }
     }, 1000)
   }
@@ -144,11 +142,11 @@ export class CityBusRouteComponent {
     if (direction === 'go') {
       this.stopResult = this.stopResponse[0].Stops;
       this.isReturnDirection = false;
-      this.setEstimatedTimeInfo(true);
+      // this.setEstimatedTimeInfo(true);
     } else {
       this.stopResult = this.stopResponse[1].Stops;
       this.isReturnDirection = true;
-      this.setEstimatedTimeInfo(true);
+      // this.setEstimatedTimeInfo(true);
     } 
   }
 }

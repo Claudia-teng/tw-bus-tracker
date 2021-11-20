@@ -47,6 +47,7 @@ export class CityBusSearchComponent {
 
   public onSetSearchCity(): void {
     this.loading = true;
+    this.searchInput = ''
     this.keyboardMode="number";
     this.displaySelectCity = this.selectedCity.label
     this.cityBusService.getBusByCity(this.selectedCity.value).subscribe(res => {
