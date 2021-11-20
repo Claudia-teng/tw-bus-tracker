@@ -32,3 +32,21 @@
       margin-right: .3rem
     > span:nth-child(2)
       color: var(--white)
+
+// google map style
+::ng-deep 
+  .gm-style .gm-style-iw-c
+    background-color: var(--black) !important
+    color: white !important
+    padding: 1rem !important
+    button
+      display: none !important
+  .gm-style-iw-c::after, .gm-style-iw-t::after
+    display: none !important
+  .poi-info-window div, .poi-info-window a
+    background-color: var(--black) !important
+    color: white !important
+    outline: none
+  .gm-style-iw-d::-webkit-scrollbar
+    display: none
+

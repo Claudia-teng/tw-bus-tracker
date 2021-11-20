@@ -26,7 +26,8 @@
   <p-gmap #gmap 
           [style]="{'width':'100%','height':'80vh'}" 
           [options]="options" 
-          [overlays]="overlays">
+          [overlays]="overlays"
+          (onOverlayClick)="handleOverlayClick($event)">
   </p-gmap>
 </div>
 

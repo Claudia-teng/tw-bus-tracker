@@ -14,6 +14,7 @@ export class CityBusMapComponent {
               private route: ActivatedRoute,) {}
   public options: any;
   public overlays: any[] = [];
+  public infoWindow: any = [];
   public isReturnDirection: boolean = false;
   public goLocationInfo: Array<StopLocation>;
   public returnLocationInfo: Array<StopLocation>;
@@ -26,6 +27,7 @@ export class CityBusMapComponent {
       }
     );
 
+    this.infoWindow = new google.maps.InfoWindow();
     this.options = {
       center: {lat: this.goLocationInfo[0].lat, lng: this.goLocationInfo[0].lng},
       zoom: 12,
@@ -115,9 +117,22 @@ export class CityBusMapComponent {
 
   public initOverlays(): void {
     if (!this.overlays||!this.overlays.length) {
+      let polygonLocation = [];
       this.goLocationInfo.forEach(location => {
-        this.overlays.push(new google.maps.Marker({position: {lat: location.lat, lng: location.lng}, title: location.name}))
+        this.overlays.push(new google.maps.Marker(
+          { position: {lat: location.lat, lng: location.lng}, 
+            title: location.name,
+            icon: 'assets/map-marker.png'
+          }));
+        polygonLocation.push({lat: location.lat, lng: location.lng});
       });
+
+      this.overlays.push(new google.maps.Polyline(
+        { path: polygonLocation, 
+          geodesic: true, 
+          strokeColor: '#1CC8EE', 
+          strokeOpacity: 1, 
+          strokeWeight: 3 }));
     }
 }
 
@@ -132,14 +147,45 @@ export class CityBusMapComponent {
   public onSetDirection(direction: string): void {
     this.isReturnDirection = direction === 'go' ? false : true;
     this.overlays = [];
+    let polygonLocation = [];
     if (direction === 'go') {
       this.goLocationInfo.forEach(location => {
-        this.overlays.push(new google.maps.Marker({position: {lat: location.lat, lng: location.lng}, title: location.name}))
+        this.overlays.push(new google.maps.Marker(
+          { position: {lat: location.lat, lng: location.lng}, 
+            title: location.name,
+            icon: 'assets/map-marker.png'}));
+        polygonLocation.push({lat: location.lat, lng: location.lng});
       });
+      this.overlays.push(new google.maps.Polyline(
+        { path: polygonLocation, 
+          geodesic: true, 
+          strokeColor: '#1CC8EE', 
+          strokeOpacity: 0.5, 
+          strokeWeight: 2 }));
     } else {
       this.returnLocationInfo.forEach(location => {
-        this.overlays.push(new google.maps.Marker({position: {lat: location.lat, lng: location.lng}, title: location.name}))
+        this.overlays.push(new google.maps.Marker(
+          { position: {lat: location.lat, lng: location.lng}, 
+            title: location.name,
+            icon: 'assets/map-marker.png'}));
+        polygonLocation.push({lat: location.lat, lng: location.lng});
       });
+      this.overlays.push(new google.maps.Polyline(
+        { path: polygonLocation, 
+          geodesic: true, 
+          strokeColor: '#1CC8EE', 
+          strokeOpacity: 0.5, 
+          strokeWeight: 2 }));
     }
+  }
+
+  public handleOverlayClick(event: any) {
+    let isMarker = event.overlay.getTitle != undefined;
+      if (isMarker) {
+          let title = event.overlay.getTitle();
+          this.infoWindow.setContent('' + title + '');
+          this.infoWindow.open(event.map, event.overlay);
+          event.map.setCenter(event.overlay.getPosition());
+      }
   }
 }
