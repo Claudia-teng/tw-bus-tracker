@@ -36,7 +36,6 @@ export class NearbyStopComponent {
 
   public findNearbyStop(): void {
     this.nearbyService.getNearByStop(this.stopLat, this.stopLng).subscribe(res => {
-      this.loading = false;
       this.stopResult = res;
       this.findRouteByStop()
     })
@@ -58,6 +57,7 @@ export class NearbyStopComponent {
         stop.AllRoute = allRoute.join(', ');
       });
     })
+    this.loading = false;
     console.log('this.stopResult', this.stopResult)
   }
 

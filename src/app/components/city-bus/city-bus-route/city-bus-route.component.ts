@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
-import { BusStopOfRoute, Stop } from 'src/app/models';
+import { BusStopOfRoute, Stop, StopLocation } from 'src/app/models';
 import { CityBusService } from 'src/app/service';
 
 @Component({
@@ -31,6 +31,9 @@ export class CityBusRouteComponent {
   public stopResponse: Array<BusStopOfRoute>;
   public subscription: Subscription;
 
+  public goLocationInfo: Array<StopLocation> = [];
+  public returnLocationInfo: Array<StopLocation> = [];
+
   ngOnInit() {
     this.route.queryParams.subscribe(
       (params: Params) => {
@@ -48,7 +51,8 @@ export class CityBusRouteComponent {
       this.stopResult = this.stopResponse[0].Stops;
       this.goDestination = res[0].Stops[res[0].Stops.length-1].StopName.Zh_tw;
       this.returnDestination = res[0].Stops[0].StopName.Zh_tw;
-      this.setEstimatedTimeInfo()
+      this.setLocationInfo();
+      this.setEstimatedTimeInfo();
     })
   }
   
@@ -106,13 +110,34 @@ export class CityBusRouteComponent {
         this.router.navigate([this.pageUrl]);
         break;
       case 'map':
-        this.router.navigate(['/city-bus/map']);
+        this.router.navigate(['/city-bus/map'], { queryParams: 
+          {
+            goLocationInfo: JSON.stringify(this.goLocationInfo),
+            returnLocationInfo: JSON.stringify(this.returnLocationInfo),
+          }
+        });
         break;
     }
   }
 
-  public navigateToMap(): void {
-    this.router.navigate(['city-bus/map'])
+  private setLocationInfo(): void {
+    this.stopResponse[0].Stops.forEach(stop => {
+      let locationInfo: StopLocation = {
+        name: stop.StopName.Zh_tw,
+        lat: stop.StopPosition.PositionLat,
+        lng: stop.StopPosition.PositionLon
+      }
+      this.goLocationInfo.push(locationInfo);
+    });
+
+    this.stopResponse[1].Stops.forEach(stop => {
+      let locationInfo: StopLocation = {
+        name: stop.StopName.Zh_tw,
+        lat: stop.StopPosition.PositionLat,
+        lng: stop.StopPosition.PositionLon
+      }
+      this.returnLocationInfo.push(locationInfo);
+    })
   }
 
   public onChangeDirection(direction: string): void {
