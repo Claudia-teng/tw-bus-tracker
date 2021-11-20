@@ -1,4 +1,4 @@
-import { NameType } from './index';
+import { NameType, RouteOperator } from './index';
 
 export interface BusRoute {
   RouteUID: string,
@@ -23,13 +23,6 @@ export interface BusRoute {
   CityCode?: string,
   UpdateTime: string,
   VersionID: number
-}
-
-interface RouteOperator {
-  OperatorID: string,
-  OperatorName: NameType,
-  OperatorCode: string,
-  OperatorNo: string
 }
 
 interface BusSubRoute {

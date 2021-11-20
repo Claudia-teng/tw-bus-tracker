@@ -31,6 +31,7 @@ export class CityBusSearchComponent {
   public selectedCity: KeyboardBtns;
   public displaySelectCity: string;
   public busResult: Array<BusRoute>;
+  public loading: boolean;
 
   public navigateToIndex(): void {
     this.router.navigate([''])
@@ -45,15 +46,22 @@ export class CityBusSearchComponent {
   }
 
   public onSetSearchCity(): void {
+    this.loading = true;
     this.keyboardMode="number";
     this.displaySelectCity = this.selectedCity.label
     this.cityBusService.getBusByCity(this.selectedCity.value).subscribe(res => {
       this.busResult = res;
+      setTimeout(() => this.loading = false, 800);
     });
   }
 
   public onSearch(input: string): void {
+    this.loading = true;
     this.searchInput += input;
+    this.cityBusService.getBusByCity(this.selectedCity.value).subscribe(res => {
+      this.loading = false;
+      this.busResult = res;
+    });
   }
 
   public navigateToRoute(route: string): void {

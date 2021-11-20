@@ -14,59 +14,43 @@
 </div>
 <div class="direction">
   <div [ngClass]="{'selected-direction': !isReturnDirection}"
-        (click)="onSetDirection('go')">
+        (click)="onChangeDirection('go')">
     <span>往</span>
-    <span>捷運劍潭站</span>
+    <span>{{ goDestination }}</span>
   </div>
-  <div [ngClass]="{'selected-direction': isReturnDirection}"
-        (click)="onSetDirection('return')">
+  <!-- do not show return if no return route -->
+  <div *ngIf="stopResponse?.length > 1"
+        [ngClass]="{'selected-direction': isReturnDirection}"
+        (click)="onChangeDirection('return')">
     <span>往</span>
-    <span>台北海大</span>
+    <span>{{ returnDestination }}</span>
   </div>
 </div>
-<div class="route">
-  <div>
-    *於
-    <span>3</span>
-    秒前更新
+<ng-container *ngIf="loading; else showRouteResult">
+  <div class="loading">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
   </div>
-  <div class="card-area">
-    <ng-container *ngFor="let stop of stopResult">
-      <div class="card no-depart">
-        <div>未發車</div>
-        <div>{{ stop.StopName.Zh_tw }}</div>
-        <div>{{ stop.Estimates?.PlateNumb }}</div>
-        <div></div>
-        <div></div>
-      </div>
-    </ng-container>
-    <div class="card no-depart">
-      <div>未發車</div>
-      <div>小北街</div>
-      <div>619-U3</div>
-      <div></div>
-      <div></div>
+</ng-container>
+<ng-template #showRouteResult>
+  <div class="route">
+    <div>
+      *於
+      <span> {{ secondCountdown }}</span>
+      秒前更新
     </div>
-    <div class="card coming">
-      <div>進站中</div>
-      <div>小北街</div>
-      <div>619-U3</div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="card waiting">
-      <div>4分</div>
-      <div>小北街</div>
-      <div>619-U3</div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="card departing">
-      <div>離站中</div>
-      <div>小北街</div>
-      <div>619-U3</div>
-      <div></div>
-      <div></div>
+    <div class="card-area">
+      <ng-container *ngFor="let stop of stopResult">
+        <div class="card" 
+            [ngClass]="{'no-depart': stop.Status === 'no-depart', 'coming': stop.Status === 'coming', 'waiting': stop.Status === 'waiting'}">
+          <div *ngIf="stop.Status === 'no-depart'">未發車</div>
+          <div *ngIf="stop.Status === 'coming'">進站中</div>
+          <div *ngIf="stop.Status === 'waiting'">{{ stop.EstimatedTime }}分</div>
+          <div>{{ stop.StopName.Zh_tw }}</div>
+          <div>{{ stop.PlateNumb }}</div>
+          <div></div>
+          <div></div>
+        </div>
+      </ng-container>
     </div>
   </div>
-</div>
+</ng-template>

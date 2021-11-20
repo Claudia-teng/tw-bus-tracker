@@ -15,7 +15,7 @@
       <div>
         <button (click)="this.keyboardMode='city'">
           <img src="assets/navigate-icon.png">
-          {{ selectedCity?.label ? selectedCity?.label : "選擇縣市" }}
+          {{ selectedCity ? selectedCity.label : "請先選擇縣市" }}
         </button>
         <button>
           手動輸入
@@ -26,25 +26,32 @@
           <ng-container [ngSwitch]="button.label">
             <ng-container *ngSwitchCase="'更多'">
               <button [ngStyle]="{color: button.textColor}"
-                      (click)="this.keyboardMode='others'">
+                      [ngClass]="{'disabled': !selectedCity}"
+                      (click)="this.keyboardMode='others'"
+                      [disabled]="!selectedCity">
                       {{ button.label }}
               </button>
             </ng-container>
             <ng-container *ngSwitchCase="'C'">
               <button [ngStyle]="{color: button.textColor}"
-                      (click)="onClearInput()">
+                      [ngClass]="{'disabled': !selectedCity}"
+                      (click)="onClearInput()"
+                      [disabled]="!selectedCity">
                       {{ button.label }}
               </button>
             </ng-container>
             <ng-container *ngSwitchDefault>
               <button [ngStyle]="{color: button.textColor}"
-                (click)="onSearch(button.label)">
-                {{ button.label }}
+                      [ngClass]="{'disabled': !selectedCity}"
+                      (click)="onSearch(button.label)"
+                      [disabled]="!selectedCity">
+                      {{ button.label }}
               </button>
             </ng-container>
           </ng-container>
         </ng-container>
-        <button (click)="onDeleteSingle()">
+        <button (click)="onDeleteSingle()"
+          [ngClass]="{'disabled': !selectedCity}">
           <img src="assets/delete-icon.png">
         </button>
       </div>
@@ -74,7 +81,12 @@
     </div>
   </div>
 
-  <ng-container>
+  <ng-container *ngIf="loading; else showBusResult">
+    <div class="loading">
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+  </ng-container>
+  <ng-template #showBusResult>
     <div class="search-result">
       <p *ngIf="displaySelectCity">
         {{ displaySelectCity }}
@@ -87,5 +99,5 @@
         </div>
       </div>
     </div>
-  </ng-container>
+  </ng-template>
 </div>

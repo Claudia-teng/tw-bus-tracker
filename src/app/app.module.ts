@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { appRoutes } from './app.routing';
 
 // Angular
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -25,6 +25,7 @@ import { IntercityBusSelectDateComponent } from './components/intercity-bus/inte
 import { IntercityBusSelectStopComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-stop/intercity-bus-select-stop.component';
 import { IntercityBusSelectTimeComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-time/intercity-bus-select-time.component';
 import { CityBusMapComponent } from './components/city-bus/city-bus-map/city-bus-map.component';
+import { AuthInterceptorService } from './auth/auth.intercepter.service';
 
 
 
@@ -53,7 +54,13 @@ import { CityBusMapComponent } from './components/city-bus/city-bus-map/city-bus
     GMapModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
