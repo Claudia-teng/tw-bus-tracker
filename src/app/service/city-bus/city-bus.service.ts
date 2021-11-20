@@ -11,8 +11,12 @@ export class CityBusService {
     private http: HttpClient,
   ) { }
 
-  public getBusByCity(city: string): Observable<Array<BusRoute>> {
-    return this.http.get<Array<BusRoute>>(`https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/${city}`);
+  public getBusByCity(city: string, searchInput?: string): Observable<Array<BusRoute>> {
+    if (!searchInput) {
+      return this.http.get<Array<BusRoute>>(`https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/${city}`);
+    } else {
+      return this.http.get<Array<BusRoute>>(`https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/${city}?$filter=contains(RouteName/Zh_tw,'${searchInput}')&$format=JSON`)
+    }
   }
 
   public getEstimatedTimeByRoute(city: string, route: string): Observable<Array<BusN1EstimateTime>>{

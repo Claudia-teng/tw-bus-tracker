@@ -6,3 +6,4 @@ export * from './route-operator.model';
 export * from './bus-of-route.model';
 export * from './stop.model';
 export * from './point-type.model';
+export * from './name-type.model';

@@ -3,22 +3,21 @@
       (click)="navigateToIndex()">
   <div>我的附近</div>
 </div>
-<div class="result">
-  <div (click)="navigateToNum()">
-    <p>衡陽路</p>
-    <p>18, 20, 222, 235, 257</p>
+
+<ng-container *ngIf="loading; else showResult">
+  <div class="loading">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
   </div>
-  <div (click)="navigateToNum()">
-    <p>衡陽路</p>
-    <p>18, 20, 222, 235, 257</p>
+</ng-container>
+<ng-template #showResult>
+  <div class="result">
+    <ng-container *ngFor="let stop of stopResult">
+      <div (click)="navigateToNum(stop)">
+        <p>{{ stop.StopName.Zh_tw }}</p>
+        <p>{{ stop.StopAddress }}</p>
+        <p>{{ stop.AllRoute }}</p>
+      </div>
+    </ng-container>
   </div>
-  <div (click)="navigateToNum()">
-    <p>衡陽路</p>
-    <p>18, 20, 222, 235, 257</p>
-  </div>
-  <div (click)="navigateToNum()">
-    <p>衡陽路</p>
-    <p>18, 20, 222, 235, 257</p>
-  </div>
-</div>
+</ng-template>
 

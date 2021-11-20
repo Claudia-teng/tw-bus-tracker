@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, PACKAGE_ROOT_URL } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { BusStop, RouteDetail } from 'src/app/models';
 
 @Component({
   selector: 'nearby-stop-num',
@@ -8,7 +9,23 @@ import { Router } from '@angular/router';
 })
 export class NearbyStopNumComponent {
 
-  constructor(private router: Router) {}
+  public stopName: Array<BusStop>;
+  public routeResult: Array<RouteDetail>;
+  public loading: boolean;
+
+  constructor(private router: Router,
+              private route: ActivatedRoute,) {}
+
+  ngOnInit() {
+    this.loading = true;
+    this.route.queryParams.subscribe(
+      (params: Params) => {
+        this.stopName = params.stopName;
+        this.routeResult = JSON.parse(params.route);
+        setTimeout(() => this.loading = false, 800)
+      }
+    );
+  }
 
   public navigateToStop(): void {
     this.router.navigate(['nearby/stop']);
@@ -18,8 +35,14 @@ export class NearbyStopNumComponent {
     this.router.navigate(['']);
   }
 
-  public navigateToRoute(): void {
-    this.router.navigate(['city-bus/route'])
+  public navigateToRoute(route: RouteDetail): void {
+    this.router.navigate(['city-bus/route'], {queryParams:
+      {
+        city: route.city,
+        route: route.name ,
+        pageUrl: '/nearby/stop'
+      }
+    })
   }
 
 }

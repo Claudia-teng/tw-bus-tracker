@@ -72,7 +72,7 @@
     <div *ngIf="keyboardMode==='others'"
           class="others" >
       <button *ngFor="let button of keyboardOthersBtns"
-              (click)="onSearch(button.label)">
+              (click)="onSearch(button.label, 'others')">
         {{ button.label }}
       </button>
       <button (click)="this.keyboardMode='number'">

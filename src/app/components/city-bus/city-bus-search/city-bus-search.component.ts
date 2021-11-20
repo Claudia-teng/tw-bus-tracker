@@ -55,11 +55,14 @@ export class CityBusSearchComponent {
     });
   }
 
-  public onSearch(input: string): void {
+  public onSearch(input?: string, type?: string): void {
     this.loading = true;
-    this.searchInput += input;
-    this.cityBusService.getBusByCity(this.selectedCity.value).subscribe(res => {
-      this.loading = false;
+    if (type === 'others') this.searchInput = ''
+    if (input) this.searchInput += input;
+    console.log('input', input)
+    console.log('this.searchInput', this.searchInput)
+    this.cityBusService.getBusByCity(this.selectedCity.value, this.searchInput).subscribe(res => {
+      setTimeout(() => this.loading = false, 800);
       this.busResult = res;
     });
   }
@@ -69,7 +72,8 @@ export class CityBusSearchComponent {
       { queryParams: 
         {
           city: this.selectedCity.value,
-          route: route
+          route: route,
+          pageUrl: this.router.url
         }
       }
     )
@@ -77,9 +81,11 @@ export class CityBusSearchComponent {
 
   public onClearInput(): void {
     this.searchInput = '';
+    this.onSearch();
   }
 
   public onDeleteSingle(): void {
     this.searchInput = this.searchInput.slice(0, -1); 
+    this.onSearch();
   }
 }

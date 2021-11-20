@@ -8,25 +8,23 @@
     (click)="navigateToIndex()">
   </div>
   <div>
-    <p>衡陽路</p>
+    <p> {{ stopName }}</p>
   </div>
 </div>
 
-<div class="result">
-  <div (click)="navigateToRoute()">
-    <p>18</p>
-    <p>萬華-捷運麟光站<p>
+<ng-container *ngIf="loading; else showResult">
+  <div class="loading">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
   </div>
-  <div (click)="navigateToRoute()">
-    <p>18</p>
-    <p>萬華-捷運麟光站<p>
+</ng-container>
+
+<ng-template #showResult>
+  <div class="result">
+    <ng-container *ngFor="let route of routeResult">
+      <div (click)="navigateToRoute(route)">
+        <p>{{ route.name }}</p>
+        <p>{{ route.start }}-{{ route.end }}<p>
+      </div>
+    </ng-container>
   </div>
-  <div (click)="navigateToRoute()">
-    <p>18</p>
-    <p>萬華-捷運麟光站<p>
-  </div>
-  <div (click)="navigateToRoute()">
-    <p>18</p>
-    <p>萬華-捷運麟光站<p>
-  </div>
-</div>
+</ng-template>

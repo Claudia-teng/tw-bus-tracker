@@ -18,6 +18,7 @@ export class CityBusRouteComponent {
   public isReturnDirection: boolean = false;
   public city: string;
   public routeName: string;
+  public pageUrl: string
   public goDestination: string;
   public returnDestination: string;
   public stopResult: Array<Stop>;
@@ -33,13 +34,16 @@ export class CityBusRouteComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(
       (params: Params) => {
+        this.loading = true;
         this.city = params.city,
         this.routeName = params.route;
+        this.pageUrl = params.pageUrl
       }
     );
     
 
     this.cityBusService.getStopByRoute(this.city, this.routeName).subscribe(res => {
+      this.loading = true;
       this.stopResponse = res;
       this.stopResult = this.stopResponse[0].Stops;
       this.goDestination = res[0].Stops[res[0].Stops.length-1].StopName.Zh_tw;
@@ -47,9 +51,8 @@ export class CityBusRouteComponent {
       this.setEstimatedTimeInfo()
     })
   }
-
+  
   private setEstimatedTimeInfo(changeDirection?:boolean): void {
-    this.loading = true;
     this.cityBusService.getEstimatedTimeByRoute(this.city, this.routeName).subscribe(res => {
       setTimeout(() => {
         this.loading = false;
@@ -99,8 +102,8 @@ export class CityBusRouteComponent {
         this.router.navigate(['']);
         break;
       // change to back page
-      case 'search':
-        this.router.navigate(['/city-bus/search']);
+      case 'back':
+        this.router.navigate([this.pageUrl]);
         break;
       case 'map':
         this.router.navigate(['/city-bus/map']);
@@ -113,7 +116,6 @@ export class CityBusRouteComponent {
   }
 
   public onChangeDirection(direction: string): void {
-    this.loading = true;
     if (direction === 'go') {
       this.stopResult = this.stopResponse[0].Stops;
       this.isReturnDirection = false;
