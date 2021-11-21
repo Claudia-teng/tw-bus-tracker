@@ -9,45 +9,49 @@
     <img src="assets/map-icon.png">
   </div>
 </div>
-<div class="direction" *ngIf="!loading">
-  <div [ngClass]="{'selected-direction': !isReturnDirection}"
-        (click)="onChangeDirection('go')">
-    <span>往</span>
-    <span>{{ goDestination }}</span>
-  </div>
-  <!-- do not show return if no return route -->
-  <div *ngIf="stopResponse?.length > 1"
-        [ngClass]="{'selected-direction': isReturnDirection}"
-        (click)="onChangeDirection('return')">
-    <span>往</span>
-    <span>{{ returnDestination }}</span>
+<div class="content-container">
+  <div>
+    <div class="direction" *ngIf="!loading">
+      <div [ngClass]="{'selected-direction': !isReturnDirection}"
+            (click)="onChangeDirection('go')">
+        <span>往</span>
+        <span>{{ goDestination }}</span>
+      </div>
+      <!-- do not show return if no return route -->
+      <div *ngIf="stopResponse?.length > 1"
+            [ngClass]="{'selected-direction': isReturnDirection}"
+            (click)="onChangeDirection('return')">
+        <span>往</span>
+        <span>{{ returnDestination }}</span>
+      </div>
+    </div>
+    <ng-container *ngIf="loading; else showRouteResult">
+      <div class="loading">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+      </div>
+    </ng-container>
+    <ng-template #showRouteResult>
+      <div class="route">
+        <div>
+          *於
+          <span> {{ secondCountdown }}</span>
+          秒前更新
+        </div>
+        <div class="card-area">
+          <ng-container *ngFor="let stop of stopResult">
+            <div class="card" 
+                [ngClass]="{'no-depart': stop.Status === 'no-depart', 'coming': stop.Status === 'coming', 'waiting': stop.Status === 'waiting'}">
+              <div *ngIf="stop.Status === 'no-depart'">未發車</div>
+              <div *ngIf="stop.Status === 'coming'">進站中</div>
+              <div *ngIf="stop.Status === 'waiting'">{{ stop.EstimatedTime }}分</div>
+              <div>{{ stop.StopName.Zh_tw }}</div>
+              <div>{{ stop.PlateNumb === '-1' ? "" : stop.PlateNumb}}</div>
+              <div></div>
+              <div></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
-<ng-container *ngIf="loading; else showRouteResult">
-  <div class="loading">
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-  </div>
-</ng-container>
-<ng-template #showRouteResult>
-  <div class="route">
-    <div>
-      *於
-      <span> {{ secondCountdown }}</span>
-      秒前更新
-    </div>
-    <div class="card-area">
-      <ng-container *ngFor="let stop of stopResult">
-        <div class="card" 
-            [ngClass]="{'no-depart': stop.Status === 'no-depart', 'coming': stop.Status === 'coming', 'waiting': stop.Status === 'waiting'}">
-          <div *ngIf="stop.Status === 'no-depart'">未發車</div>
-          <div *ngIf="stop.Status === 'coming'">進站中</div>
-          <div *ngIf="stop.Status === 'waiting'">{{ stop.EstimatedTime }}分</div>
-          <div>{{ stop.StopName.Zh_tw }}</div>
-          <div>{{ stop.PlateNumb === '-1' ? "" : stop.PlateNumb}}</div>
-          <div></div>
-          <div></div>
-        </div>
-      </ng-container>
-    </div>
-  </div>
-</ng-template>

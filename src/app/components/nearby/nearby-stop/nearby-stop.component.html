@@ -4,25 +4,29 @@
   <div>我的附近</div>
 </div>
 
-<ng-container *ngIf="loading; else showResult">
-  <div class="loading">
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-    <div>定位中請稍候</div>
-  </div>
-</ng-container>
-<ng-template #showResult>
-  <div class="result" *ngIf="!showError">
-    <ng-container *ngFor="let stop of stopResult">
-      <div (click)="navigateToNum(stop)">
-        <p>{{ stop.StopName.Zh_tw }}</p>
-        <p>{{ stop.StopAddress }}</p>
-        <p>{{ stop.AllRoute }}</p>
+<div class="content-container">
+  <div>
+    <ng-container *ngIf="loading; else showResult">
+      <div class="loading">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        <div>定位中請稍候</div>
       </div>
     </ng-container>
-  </div>
-</ng-template>
+    <ng-template #showResult>
+      <div class="result" *ngIf="!showError">
+        <ng-container *ngFor="let stop of stopResult">
+          <div (click)="navigateToNum(stop)">
+            <p>{{ stop.StopName.Zh_tw }}</p>
+            <p>{{ stop.StopAddress }}</p>
+            <p>{{ stop.AllRoute }}</p>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
 
-<div class="error" *ngIf="showError">
-  <div>無法定位，請開啟定位功能。</div>
+    <div class="error" *ngIf="showError">
+      <div>無法定位，請開啟定位功能。</div>
+    </div>
+  </div>
 </div>
 

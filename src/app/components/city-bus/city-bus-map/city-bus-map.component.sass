@@ -1,3 +1,5 @@
+@import "../../../../styles"
+
 .topbar
   display: flex
   justify-content: space-around
@@ -20,18 +22,22 @@
 
 .direction
   display: flex
+  justify-content: center
   margin-bottom: .2rem
   > div
-    flex: 1
-    padding: 1rem
-    text-align: center
-    &.selected-direction
-      box-shadow: 0 6px 2px -2px var(--blue)
-    > span:nth-child(1)
-      color: var(--blue)
-      margin-right: .3rem
-    > span:nth-child(2)
-      color: var(--white)
+    width: 100%
+    display: flex
+    > div
+      flex: 1
+      padding: 1rem
+      text-align: center
+      &.selected-direction
+        box-shadow: 0 6px 2px -2px var(--blue)
+      > span:nth-child(1)
+        color: var(--blue)
+        margin-right: .3rem
+      > span:nth-child(2)
+        color: var(--white)
 
 // google map style
 ::ng-deep 
@@ -49,4 +55,12 @@
     outline: none
   .gm-style-iw-d::-webkit-scrollbar
     display: none
+
+@include breakpoint(pc)
+  .direction 
+    display: flex
+    justify-content: center
+    > div
+      max-width: 1300px
+      min-width: 80%
 

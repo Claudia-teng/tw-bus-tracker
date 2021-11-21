@@ -11,19 +11,23 @@
   </div>
 </div>
 
-<ng-container *ngIf="loading; else showResult">
-  <div class="loading">
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-  </div>
-</ng-container>
+<div class="content-container">
+  <div>
+  <ng-container *ngIf="loading; else showResult">
+    <div class="loading">
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+  </ng-container>
 
-<ng-template #showResult>
-  <div class="result">
-    <ng-container *ngFor="let route of routeResult">
-      <div (click)="navigateToRoute(route)">
-        <p>{{ route.name }}</p>
-        <p>{{ route.start }}-{{ route.end }}<p>
-      </div>
-    </ng-container>
+  <ng-template #showResult>
+    <div class="result">
+      <ng-container *ngFor="let route of routeResult">
+        <div (click)="navigateToRoute(route)">
+          <p>{{ route.name }}</p>
+          <p>{{ route.start }}-{{ route.end }}<p>
+        </div>
+      </ng-container>
+    </div>
+  </ng-template>
   </div>
-</ng-template>
+</div>

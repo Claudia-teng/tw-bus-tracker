@@ -70,7 +70,7 @@
     font-size: .7rem
     left: calc((100% - 237px) / 2)
   
-@include breakpoint(pad)
+@include breakpoint(padpro)
   .container-bg
     background-image: url("../../../assets/index-bg-pad.png")
     > div
@@ -107,5 +107,47 @@
     button.search-intercity
       top: 86%
       right: 55%
+
+@include breakpoint(pc)
+  .container-bg
+    background-image: url("../../../assets/index-bg-pc.png")
+    > div
+      width: 1024px
+      height: 618px
+      position: relative
+    .pc
+      display: unset
+    .phone, .pad
+      display: none
+    img.pc
+      &:nth-child(11)
+        top: 5%
+        left: 60%
+        width: 17rem
+      &:nth-child(12)
+        top: 22%
+        left: 75%
+      &:nth-child(13)
+        top: 28%
+        left: 72%
+      &:nth-child(14)
+        top: 68%
+        left: 78%
+      &:nth-child(15)
+        top: 83%
+        left: 94%
+    button.nearby
+      top: 27%
+      right: 0%
+    button.search-bus
+      top: 59%
+      right: 1%
+    button.search-intercity
+      top: 80%
+      right: 15%
+    p
+      max-width: fit-content
+      left: unset
+      right: 0
 
 
