@@ -63,7 +63,7 @@ export class CityBusRouteComponent {
       if (!changeDirection) this.handleCountdown();
       this.estimateTimeResponse = res;
       this.bindInfoByDirection(this.stopResult);
-      console.log('this.stopResult', this.stopResult);
+      // console.log('this.stopResult', this.stopResult);
     })
   }
 

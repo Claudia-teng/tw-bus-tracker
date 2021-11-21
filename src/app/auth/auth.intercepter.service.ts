@@ -17,7 +17,6 @@ export class AuthInterceptorService implements HttpInterceptor {
     var HMAC = ShaObj.getHMAC('B64');
     var Authorization = 'hmac username=\"' + AppID + '\", algorithm=\"hmac-sha1\", headers=\"x-date\", signature=\"' + HMAC + '\"';
 
-    console.log('Request is on its way');
     const modifiedRequest = req.clone({
       headers: req.headers
         .set('Authorization', Authorization)

@@ -67,7 +67,7 @@ export class NearbyStopComponent {
         this.loading = false;
       });
     })
-    console.log('this.stopResult', this.stopResult)
+    // console.log('this.stopResult', this.stopResult)
   }
 
   public navigateToIndex(): void {
@@ -75,7 +75,6 @@ export class NearbyStopComponent {
   }
 
   public navigateToNum(stop: BusStop): void {
-    console.log('stop.Route', stop.Route)
     this.router.navigate(['nearby/stop-num'], {queryParams: 
       {
         stopName: stop.StopName.Zh_tw,

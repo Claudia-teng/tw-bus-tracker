@@ -14,7 +14,8 @@ export class CityBusSearchComponent {
   @ViewChild('search') searchElement: ElementRef;
   
   @HostListener('window:scroll', []) onScrollEvent(){
-    console.log('this.inputFocus', this.inputFocus)
+    let isPC = window.matchMedia('(min-width: 1025px)');
+    if (isPC) return;
     if (this.inputFocus) {
       setTimeout(() => this.inputFocus = false, 1000)
       return;
@@ -67,8 +68,7 @@ export class CityBusSearchComponent {
     this.loading = true;
     if (type === 'others') this.searchInput = ''
     if (input) this.searchInput += input;
-    console.log('input', input)
-    console.log('this.searchInput', this.searchInput)
+    // console.log('this.searchInput', this.searchInput)
     this.cityBusService.getBusByCity(this.selectedCity.value, this.searchInput).subscribe(res => {
       setTimeout(() => this.loading = false, 800);
       this.busResult = res;
