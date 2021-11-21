@@ -41,7 +41,7 @@ export class CityBusSearchComponent {
   public onInputFocus(): void {
     this.searchMode = true;
     this.freezeScroll = true;
-    setTimeout(() => this.freezeScroll = false, 800)
+    setTimeout(() => this.freezeScroll = false, 3000)
   }
 
   public onSelectCity(city: KeyboardBtns): void {
