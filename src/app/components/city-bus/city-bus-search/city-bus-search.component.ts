@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { fromEvent } from 'rxjs';
 import { BusRoute, KeyboardBtns } from 'src/app/models';
 import { CityBusService } from 'src/app/service';
 
@@ -14,6 +15,11 @@ export class CityBusSearchComponent {
   @ViewChild('search') searchElement: ElementRef;
   
   @HostListener('window:scroll', []) onScrollEvent(){
+    console.log('this.inputFocus', this.inputFocus)
+    if (this.inputFocus) {
+      setTimeout(() => this.inputFocus = false, 1000)
+      return;
+    }
     this.searchMode = false;
     this.searchElement.nativeElement.blur();
   } 
@@ -32,7 +38,7 @@ export class CityBusSearchComponent {
   public displaySelectCity: string;
   public busResult: Array<BusRoute>;
   public loading: boolean;
-  public freezeScroll: boolean;
+  public inputFocus: boolean;
 
   public navigateToIndex(): void {
     this.router.navigate([''])
@@ -40,8 +46,7 @@ export class CityBusSearchComponent {
 
   public onInputFocus(): void {
     this.searchMode = true;
-    this.freezeScroll = true;
-    setTimeout(() => this.freezeScroll = false, 3000)
+    this.inputFocus = true;
   }
 
   public onSelectCity(city: KeyboardBtns): void {

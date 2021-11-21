@@ -89,7 +89,7 @@
       <p *ngIf="displaySelectCity">
         {{ displaySelectCity }}
       </p>
-      <div class="card-area" [ngClass]="{'freeze': freezeScroll}" (scroll)="onScrollEvent()">
+      <div class="card-area" (scroll)="onScrollEvent()">
         <div *ngFor="let bus of busResult"
           (click)="navigateToRoute(bus.RouteName.Zh_tw)">
           <p>{{ bus.RouteName.Zh_tw }}</p>
