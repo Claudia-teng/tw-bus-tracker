@@ -28,7 +28,8 @@
                 </button>
               </ng-container>
               <ng-container *ngSwitchDefault>
-                <button [ngStyle]="{color: button.textColor}">
+                <button [ngStyle]="{color: button.textColor}"
+                (click)="navigateToPriceQuery()">
                   {{ button.label }}
                 </button>
               </ng-container>
