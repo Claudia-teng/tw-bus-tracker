@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
-import { BusStopOfRoute, Stop, StopLocation } from 'src/app/models';
+import { BusN1EstimateTime, BusStopOfRoute, Stop, StopLocation } from 'src/app/models';
 import { CityBusService } from 'src/app/service';
 
 @Component({
@@ -22,6 +22,7 @@ export class CityBusRouteComponent {
   public goDestination: string;
   public returnDestination: string;
   public stopResult: Array<Stop>;
+  public estimateTimeResponse: Array<BusN1EstimateTime>;
   public secondCountdown: number = 0;
   public timerId: ReturnType<typeof setInterval>;
 
@@ -60,29 +61,34 @@ export class CityBusRouteComponent {
     this.cityBusService.getEstimatedTimeByRoute(this.city, this.routeName).subscribe(res => {
       setTimeout(() => this.loading = false, 800);
       if (!changeDirection) this.handleCountdown();
-      res.forEach(busN1EstimateTime => {
-        this.stopResult.forEach((stop) => {
-          if (stop.StopUID === busN1EstimateTime.StopUID) {
-            // EstimateTime
-            if (busN1EstimateTime.EstimateTime == null) {
-              stop.EstimatedTime = null;
-            } else {
-              stop.EstimatedTime = Math.floor(busN1EstimateTime.EstimateTime / 60);
-            }
-            // Status
-            if (stop.EstimatedTime === null) {
-              stop.Status = 'no-depart';
-            } else if (stop.EstimatedTime === 0) {
-              stop.Status = 'coming';
-            } else {
-              stop.Status = 'waiting';
-            }
-            // plateNumb
-            stop.PlateNumb = busN1EstimateTime.PlateNumb;
-          }
-        });
-      })
+      this.estimateTimeResponse = res;
+      this.bindInfoByDirection(this.stopResult);
       console.log('this.stopResult', this.stopResult);
+    })
+  }
+
+  private bindInfoByDirection(stopResult): void {
+    this.estimateTimeResponse.forEach(busN1EstimateTime => {
+      stopResult.forEach((stop) => {
+        if (stop.StopUID === busN1EstimateTime.StopUID) {
+          // EstimateTime
+          if (busN1EstimateTime.EstimateTime == null) {
+            stop.EstimatedTime = null;
+          } else {
+            stop.EstimatedTime = Math.floor(busN1EstimateTime.EstimateTime / 60);
+          }
+          // Status
+          if (stop.EstimatedTime === null) {
+            stop.Status = 'no-depart';
+          } else if (stop.EstimatedTime === 0) {
+            stop.Status = 'coming';
+          } else {
+            stop.Status = 'waiting';
+          }
+          // plateNumb
+          stop.PlateNumb = busN1EstimateTime.PlateNumb;
+        }
+      });
     })
   }
 
@@ -142,11 +148,16 @@ export class CityBusRouteComponent {
     if (direction === 'go') {
       this.stopResult = this.stopResponse[0].Stops;
       this.isReturnDirection = false;
-      // this.setEstimatedTimeInfo(true);
+      this.bindInfoByDirection(this.stopResult);
     } else {
       this.stopResult = this.stopResponse[1].Stops;
       this.isReturnDirection = true;
-      // this.setEstimatedTimeInfo(true);
+      this.bindInfoByDirection(this.stopResult);
     } 
   }
+
+  ngOnDestroy() {
+    clearInterval(this.timerId);
+  }
+
 }
