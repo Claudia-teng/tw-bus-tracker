@@ -76,13 +76,16 @@ button
   padding-top: 5rem
   
 .search-result
+  height: 90%
   > p
     font-size: 1rem
     color: var(--white)
     margin: .5rem 1rem 1rem 1rem
   .card-area
-    height: 80vh
+    height: 80%
     overflow-y: scroll
+    &.freeze
+      overflow-y: hidden
     &::-webkit-scrollbar
       display: none
     > div

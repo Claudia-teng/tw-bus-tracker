@@ -32,6 +32,7 @@ export class CityBusSearchComponent {
   public displaySelectCity: string;
   public busResult: Array<BusRoute>;
   public loading: boolean;
+  public freezeScroll: boolean;
 
   public navigateToIndex(): void {
     this.router.navigate([''])
@@ -39,6 +40,8 @@ export class CityBusSearchComponent {
 
   public onInputFocus(): void {
     this.searchMode = true;
+    this.freezeScroll = true;
+    setTimeout(() => this.freezeScroll = false, 800)
   }
 
   public onSelectCity(city: KeyboardBtns): void {
