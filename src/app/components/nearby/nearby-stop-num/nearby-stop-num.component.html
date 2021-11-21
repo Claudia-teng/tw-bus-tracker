@@ -1,11 +1,10 @@
 <div class="topbar">
-  <div>
-    <img src="assets/back-arrow.png"
-    (click)="navigateToStop()">
+  <div (click)="navigateToStop()">
+    <img src="assets/back-arrow.png">
   </div>
-  <div>
+  <div (click)="navigateToIndex()">
     <img src="assets/topbar-logo.png"
-    (click)="navigateToIndex()">
+    >
   </div>
   <div>
     <p> {{ stopName }}</p>

@@ -136,7 +136,7 @@ export class CityBusMapComponent {
     }
 }
 
-  public navigateToRoute(): void {
+  public navigateToSearch(): void {
     this.router.navigate(['city-bus/search']);
   }
 

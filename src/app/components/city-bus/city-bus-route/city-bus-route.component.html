@@ -1,15 +1,12 @@
 <div class="topbar">
-  <div>
-    <img src="assets/back-arrow.png"
-    (click)="navigateTo('back')">
+  <div (click)="navigateTo('back')">
+    <img src="assets/back-arrow.png">
   </div>
-  <div>
-    <img src="assets/topbar-logo.png"
-    (click)="navigateTo('index')">
+  <div (click)="navigateTo('index')">
+    <img src="assets/topbar-logo.png">
   </div>
-  <div>
-    <img src="assets/map-icon.png"
-    (click)="navigateTo('map')">
+  <div (click)="navigateTo('map')">
+    <img src="assets/map-icon.png">
   </div>
 </div>
 <div class="direction" *ngIf="!loading">

@@ -11,7 +11,7 @@
   </div>
 </ng-container>
 <ng-template #showResult>
-  <div class="result">
+  <div class="result" *ngIf="!showError">
     <ng-container *ngFor="let stop of stopResult">
       <div (click)="navigateToNum(stop)">
         <p>{{ stop.StopName.Zh_tw }}</p>
