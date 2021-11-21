@@ -14,7 +14,7 @@ export class NearbyStopComponent {
   public stopLng: number;
   public stopResult: Array<BusStop>;
   public loading: boolean;
-
+  public showError: boolean = false;
 
   constructor(private router: Router,
               private nearbyService: NearbyService) {}
@@ -26,11 +26,14 @@ export class NearbyStopComponent {
   public getUserLocation() {
     this.loading = true;
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
+      navigator.geolocation.getCurrentPosition((position) => {
         this.stopLat = position.coords.latitude;
         this.stopLng = position.coords.longitude;
         this.findNearbyStop();
-      });
+      }, (err) => {
+        this.loading = false;
+        this.showError = true;
+      })
     } 
   }
 
