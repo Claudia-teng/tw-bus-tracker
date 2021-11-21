@@ -54,10 +54,11 @@ export class NearbyStopComponent {
             start: singleStop.DepartureStopNameZh,
             end: singleStop.DestinationStopNameZh});
         });
+        allRoute = allRoute.filter((route, index, self) => self.indexOf(route) === index);
         stop.AllRoute = allRoute.join(', ');
+        this.loading = false;
       });
     })
-    this.loading = false;
     console.log('this.stopResult', this.stopResult)
   }
 

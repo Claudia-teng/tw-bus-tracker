@@ -1,19 +1,101 @@
-div:nth-child(1)
-  height: 50%
-  display: flex
-  justify-content: center
-  align-items: center
+@import "../../../styles"
+  
+div
+  height: 100%
+  background-image: url("../../../assets/index-bg-phone.png")
+  background-repeat: no-repeat
+  background-size: cover
+  position: relative
+  .phone
+    display: unset
+  .pad, .pc
+    display: none
   img
-    width: 60%
-div:nth-child(2)
-  > button
-    display: block
-    margin: 1rem auto
-    padding: 1rem
+    position: absolute
+  img.phone
+    &:first-child
+      top: 20%
+      left: 10%
+      width: 10rem
+    &:nth-child(2)
+      top: 30%
+      left: calc((100% - 190px) / 2)
+    &:nth-child(3)
+      top: 35%
+      left: 16%
+    &:nth-child(4)
+      top: 66%
+      left: 30%
+    &:nth-child(5)
+      top: 75%
+      left: 66%
+  button
+    position: absolute
+    padding: .65rem
     color: var(--blue)
-    width: 15rem
-    font-size: 1rem
-
-
+    background: var(--gray)
+    border-radius: 8px
+    width: 10rem
+    display: flex
+    justify-content: center
+    align-items: center
+  button.nearby
+    top: 33%
+    right: 10%
+    &::before
+      content: url('../../../assets/index-marker-icon.png')
+      margin-right: .5rem
+  button.search-bus
+    top: 60%
+    right: 15%
+    &::before
+      content: url('../../../assets/index-search-icon.png')
+      margin-right: .5rem
+  button.search-intercity
+    top: 75%
+    right: 45%
+    &::before
+      content: url('../../../assets/index-search-icon.png')
+      margin-right: .5rem
+  p
+    position: absolute
+    bottom: 0%
+    color: gray
+    font-size: .7rem
+    left: calc((100% - 240px) / 2)
+  
+@include breakpoint(pad)
+  div
+    background-image: url("../../../assets/index-bg-pad.png")
+    .pad
+      display: unset
+    .phone, .pc
+      display: none
+    img.pad
+      &:nth-child(6)
+        top: 19%
+        left: 18%
+        width: 17rem
+      &:nth-child(7)
+        top: 30%
+        left: calc((100% - 250px) / 2)
+      &:nth-child(8)
+        top: 35%
+        left: 28%
+      &:nth-child(9)
+        top: 62%
+        left: 37.5%
+      &:nth-child(10)
+        top: 71%
+        left: 61%
+    button.nearby
+      top: 33%
+      right: 20%
+    button.search-bus
+      top: 56%
+      right: 25%
+    button.search-intercity
+      top: 70%
+      right: 55%
 
 

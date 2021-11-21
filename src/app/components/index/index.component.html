@@ -1,8 +1,27 @@
 <div>
-  <img src="assets/index-logo.png"/>
-</div>
-<div>
-  <button (click)="navigateTo('city-bus')">查詢公車</button>
-  <button (click)="navigateTo('nearby')">搜尋附近公車站</button>
-  <button (click)="navigateTo('intercity-bus')">查詢客運</button>
+  <!-- phone -->
+  <img class="phone" src="assets/index-logo-phone.png"/>
+  <img class="phone" src="assets/index-line-phone.svg"/>
+  <img class="phone" src="assets/index-circle-phone.svg"/>
+  <img class="phone" src="assets/index-circle-phone.svg"/>
+  <img class="phone" src="assets/index-circle-phone.svg"/>
+  <!-- pad -->
+  <img class="pad" src="assets/index-logo-pad.png"/>
+  <img class="pad" src="assets/index-line-pad.svg"/>
+  <img class="pad" src="assets/index-circle-pad.svg"/>
+  <img class="pad" src="assets/index-circle-pad.svg"/>
+  <img class="pad" src="assets/index-circle-pad.svg"/>
+  <button class="nearby"
+          (click)="navigateTo('nearby')">
+          附近公車站
+  </button>
+  <button class="search-bus"
+          (click)="navigateTo('city-bus')">
+          查詢公車
+  </button>
+  <button class="search-intercity"
+          (click)="navigateTo('intercity-bus')">
+          查詢客運
+  </button>
+  <p>Taiwan Bus  © Code: Claudia Teng  /  Design: KT</p>
 </div>
