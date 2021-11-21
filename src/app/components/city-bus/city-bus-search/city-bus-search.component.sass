@@ -1,3 +1,17 @@
+@import "../../../../styles"
+
+.out-container
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+
+.in-container
+  width: 100%
+  height: 100%
+  position: relative
+
 .background
   width: 100%
   height: 100%
@@ -16,6 +30,7 @@
     color: var(--blue)
 
 .keyboard
+  z-index: 100
   background-color: var(--gray)
   padding: 1rem
   width: 100%
@@ -72,17 +87,24 @@ button
     opacity: 0.3
 
 .loading
+  position: absolute
+  height: 90%
+  bottom: 0
+  width: 100%
   text-align: center
   padding-top: 5rem
   
 .search-result
+  position: absolute
   height: 90%
+  bottom: 0
+  width: 100%
   > p
     font-size: 1rem
     color: var(--white)
     margin: .5rem 1rem 1rem 1rem
   .card-area
-    height: 80%
+    height: 90%
     overflow-y: scroll
     &.freeze
       overflow-y: hidden
@@ -105,3 +127,26 @@ button
       background-color: var(--black)
     > div:nth-child(odd)
       background-color: var(--gray)
+
+
+@include breakpoint(pc)
+  .out-container
+    width: 100%
+  
+  .in-container
+    width: 1300px
+    display: flex
+
+  .background
+    width: 40%
+    height: 100%
+    overflow: hidden
+    position: relative
+
+  .search-result, .loading
+    position: static
+    width: 60%
+    > p
+      margin: 1rem
+    .card-area
+      height: 100%

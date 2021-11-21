@@ -1,6 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { fromEvent } from 'rxjs';
 import { BusRoute, KeyboardBtns } from 'src/app/models';
 import { CityBusService } from 'src/app/service';
 

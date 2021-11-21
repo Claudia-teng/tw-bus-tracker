@@ -1,101 +1,104 @@
-<div class="background">
-  <div class="topbar">
-    <img src="assets/topbar-logo.png"
-    (click)="navigateToIndex()">
-    <input #search
-          placeholder="請透過鍵盤輸入關鍵字" 
-          [(ngModel)]="searchInput"
-          (focus)="onInputFocus()"
-          readonly>
-  </div>
-
-  <div class="keyboard"
-      [ngClass]="searchMode ? 'show' : 'hide'">
-    <div *ngIf="keyboardMode==='number'"
-          class="number">
-      <div>
-        <button (click)="this.keyboardMode='city'">
-          <img src="assets/navigate-icon.png">
-          {{ selectedCity ? selectedCity.label : "請先選擇縣市" }}
-        </button>
+<div class="out-container">
+  <div class="in-container">
+    <div class="background">
+      <div class="topbar">
+        <img src="assets/topbar-logo.png"
+        (click)="navigateToIndex()">
+        <input #search
+              placeholder="請透過鍵盤輸入關鍵字" 
+              [(ngModel)]="searchInput"
+              (focus)="onInputFocus()"
+              readonly>
       </div>
-      <div>
-        <ng-container *ngFor="let button of keyboardNumBtns">
-          <ng-container [ngSwitch]="button.label">
-            <ng-container *ngSwitchCase="'更多'">
-              <button [ngStyle]="{color: button.textColor}"
-                      [ngClass]="{'disabled': !selectedCity}"
-                      (click)="this.keyboardMode='others'"
-                      [disabled]="!selectedCity">
-                      {{ button.label }}
-              </button>
-            </ng-container>
-            <ng-container *ngSwitchCase="'C'">
-              <button [ngStyle]="{color: button.textColor}"
-                      [ngClass]="{'disabled': !selectedCity}"
-                      (click)="onClearInput()"
-                      [disabled]="!selectedCity">
-                      {{ button.label }}
-              </button>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
-              <button [ngStyle]="{color: button.textColor}"
-                      [ngClass]="{'disabled': !selectedCity}"
-                      (click)="onSearch(button.label)"
-                      [disabled]="!selectedCity">
-                      {{ button.label }}
-              </button>
-            </ng-container>
-          </ng-container>
-        </ng-container>
-        <button (click)="onDeleteSingle()"
-          [ngClass]="{'disabled': !selectedCity}">
-          <img src="assets/delete-icon.png">
-        </button>
-      </div>
-    </div>
 
-    <div *ngIf="keyboardMode==='city'"
-          class="city" >
-      <button *ngFor="let button of keyboardCityBtns"
-              (click)="onSelectCity(button)"
-              [ngClass]="selectedCity?.label === button.label ? 'selected-button' : ''">
-        {{ button.label }}
-      </button>
-      <button (click)="onSetSearchCity()">
-        設定
-      </button>
-    </div>
+      <div class="keyboard"
+          [ngClass]="searchMode ? 'show' : 'hide'">
+        <div *ngIf="keyboardMode==='number'"
+              class="number">
+          <div>
+            <button (click)="this.keyboardMode='city'">
+              <img src="assets/navigate-icon.png">
+              {{ selectedCity ? selectedCity.label : "請先選擇縣市" }}
+            </button>
+          </div>
+          <div>
+            <ng-container *ngFor="let button of keyboardNumBtns">
+              <ng-container [ngSwitch]="button.label">
+                <ng-container *ngSwitchCase="'更多'">
+                  <button [ngStyle]="{color: button.textColor}"
+                          [ngClass]="{'disabled': !selectedCity}"
+                          (click)="this.keyboardMode='others'"
+                          [disabled]="!selectedCity">
+                          {{ button.label }}
+                  </button>
+                </ng-container>
+                <ng-container *ngSwitchCase="'C'">
+                  <button [ngStyle]="{color: button.textColor}"
+                          [ngClass]="{'disabled': !selectedCity}"
+                          (click)="onClearInput()"
+                          [disabled]="!selectedCity">
+                          {{ button.label }}
+                  </button>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                  <button [ngStyle]="{color: button.textColor}"
+                          [ngClass]="{'disabled': !selectedCity}"
+                          (click)="onSearch(button.label)"
+                          [disabled]="!selectedCity">
+                          {{ button.label }}
+                  </button>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <button (click)="onDeleteSingle()"
+              [ngClass]="{'disabled': !selectedCity}">
+              <img src="assets/delete-icon.png">
+            </button>
+          </div>
+        </div>
 
-    <div *ngIf="keyboardMode==='others'"
-          class="others" >
-      <button *ngFor="let button of keyboardOthersBtns"
-              (click)="onSearch(button.label, 'others')">
-        {{ button.label }}
-      </button>
-      <button (click)="this.keyboardMode='number'">
-        回上一頁
-      </button>
-    </div>
-  </div>
+        <div *ngIf="keyboardMode==='city'"
+              class="city" >
+          <button *ngFor="let button of keyboardCityBtns"
+                  (click)="onSelectCity(button)"
+                  [ngClass]="selectedCity?.label === button.label ? 'selected-button' : ''">
+            {{ button.label }}
+          </button>
+          <button (click)="onSetSearchCity()">
+            設定
+          </button>
+        </div>
 
-  <ng-container *ngIf="loading; else showBusResult">
-    <div class="loading">
-      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-    </div>
-  </ng-container>
-  <ng-template #showBusResult>
-    <div class="search-result">
-      <p *ngIf="displaySelectCity">
-        {{ displaySelectCity }}
-      </p>
-      <div class="card-area" (scroll)="onScrollEvent()">
-        <div *ngFor="let bus of busResult"
-          (click)="navigateToRoute(bus.RouteName.Zh_tw)">
-          <p>{{ bus.RouteName.Zh_tw }}</p>
-          <p>{{ bus.DepartureStopNameZh }} - {{ bus.DestinationStopNameZh }}</p>
+        <div *ngIf="keyboardMode==='others'"
+              class="others" >
+          <button *ngFor="let button of keyboardOthersBtns"
+                  (click)="onSearch(button.label, 'others')">
+            {{ button.label }}
+          </button>
+          <button (click)="this.keyboardMode='number'">
+            回上一頁
+          </button>
         </div>
       </div>
     </div>
-  </ng-template>
+    <ng-container *ngIf="loading; else showBusResult">
+      <div class="loading">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+      </div>
+    </ng-container>
+    <ng-template #showBusResult>
+      <div class="search-result">
+        <p *ngIf="displaySelectCity">
+          {{ displaySelectCity }}
+        </p>
+        <div class="card-area" (scroll)="onScrollEvent()">
+          <div *ngFor="let bus of busResult"
+            (click)="navigateToRoute(bus.RouteName.Zh_tw)">
+            <p>{{ bus.RouteName.Zh_tw }}</p>
+            <p>{{ bus.DepartureStopNameZh }} - {{ bus.DestinationStopNameZh }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>
