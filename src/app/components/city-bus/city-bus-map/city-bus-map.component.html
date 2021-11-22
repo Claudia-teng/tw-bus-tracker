@@ -17,7 +17,9 @@
       <span>往</span>
       <span>{{ goDestination }}</span>
     </div>
-    <div [ngClass]="{'selected-direction': isReturnDirection}"
+    <!-- do not show return if no return route -->
+    <div *ngIf="stopResponse?.length > 1"
+          [ngClass]="{'selected-direction': isReturnDirection}"
           (click)="onSetDirection('return')">
       <span>往</span>
       <span>{{ returnDestination }}</span>
