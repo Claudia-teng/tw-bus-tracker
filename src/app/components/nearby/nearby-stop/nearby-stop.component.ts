@@ -51,6 +51,7 @@ export class NearbyStopComponent {
     ))
   )
     this.stopResult.forEach(stop => {
+      if (!stop.City) return;
       this.nearbyService.getRouteByStop(stop.City, stop.StationID).subscribe(res => {
         let allRoute: Array<string> = [];
         res.forEach(singleStop => {
