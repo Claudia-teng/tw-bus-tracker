@@ -10,7 +10,7 @@ export class CityBusService {
   constructor(
     private http: HttpClient,
   ) { }
-
+  
   public getBusByCity(city: string, searchInput?: string): Observable<Array<BusRoute>> {
     if (!searchInput) {
       return this.http.get<Array<BusRoute>>(`https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/${city}`);

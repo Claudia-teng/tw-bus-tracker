@@ -15,7 +15,7 @@ export class CityBusSearchComponent {
   
   @HostListener('window:scroll', []) onScrollEvent(){
     let isPC = window.matchMedia('(min-width: 1025px)');
-    if (isPC) return;
+    if (isPC.matches) return;
     if (this.inputFocus) {
       setTimeout(() => this.inputFocus = false, 1000)
       return;
@@ -65,6 +65,7 @@ export class CityBusSearchComponent {
   }
 
   public onSearch(input?: string, type?: string): void {
+    this.playAudio();
     this.loading = true;
     if (type === 'others') this.searchInput = ''
     if (input) this.searchInput += input;
@@ -95,5 +96,12 @@ export class CityBusSearchComponent {
   public onDeleteSingle(): void {
     this.searchInput = this.searchInput.slice(0, -1); 
     this.onSearch();
+  }
+
+  public playAudio(): void {
+    let audio = new Audio();
+    audio.src = "../../../../assets/bus.mp3";
+    audio.load();
+    audio.play();
   }
 }

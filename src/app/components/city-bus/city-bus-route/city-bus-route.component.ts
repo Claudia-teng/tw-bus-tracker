@@ -133,15 +133,17 @@ export class CityBusRouteComponent {
       }
       this.goLocationInfo.push(locationInfo);
     });
-
-    this.stopResponse[1].Stops.forEach(stop => {
-      let locationInfo: StopLocation = {
-        name: stop.StopName.Zh_tw,
-        lat: stop.StopPosition.PositionLat,
-        lng: stop.StopPosition.PositionLon
-      }
-      this.returnLocationInfo.push(locationInfo);
-    })
+    // can be only one way
+    if (this.stopResponse[1]) {
+      this.stopResponse[1].Stops.forEach(stop => {
+        let locationInfo: StopLocation = {
+          name: stop.StopName.Zh_tw,
+          lat: stop.StopPosition.PositionLat,
+          lng: stop.StopPosition.PositionLon
+        }
+        this.returnLocationInfo.push(locationInfo);
+      })
+    }
   }
 
   public onChangeDirection(direction: string): void {

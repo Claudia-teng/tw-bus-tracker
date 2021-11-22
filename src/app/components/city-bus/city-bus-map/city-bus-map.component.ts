@@ -11,7 +11,7 @@ declare var google: any
 export class CityBusMapComponent {
 
   constructor(private router: Router,
-              private route: ActivatedRoute,) {}
+              private route: ActivatedRoute) {}
   public options: any;
   public overlays: any[] = [];
   public infoWindow: any = [];

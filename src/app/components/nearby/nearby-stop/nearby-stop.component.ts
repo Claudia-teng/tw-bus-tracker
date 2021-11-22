@@ -45,8 +45,13 @@ export class NearbyStopComponent {
   }
 
   public findRouteByStop(): void {
+    this.stopResult = this.stopResult.filter((route, index, self) =>
+    index === self.findIndex((t) => (
+      t.StationID === route.StationID
+    ))
+  )
     this.stopResult.forEach(stop => {
-      this.nearbyService.getRouteByLocation(stop.StopPosition.PositionLat, stop.StopPosition.PositionLon).subscribe(res => {
+      this.nearbyService.getRouteByStop(stop.City, stop.StationID).subscribe(res => {
         let allRoute: Array<string> = [];
         res.forEach(singleStop => {
           allRoute.push(singleStop.RouteName.Zh_tw);
@@ -57,12 +62,6 @@ export class NearbyStopComponent {
             start: singleStop.DepartureStopNameZh,
             end: singleStop.DestinationStopNameZh});
         });
-        allRoute = allRoute.filter((route, index, self) => self.indexOf(route) === index);
-        stop.Route = stop.Route.filter((route, index, self) =>
-          index === self.findIndex((t) => (
-            t.name === route.name
-          ))
-        )
         stop.AllRoute = allRoute.join(', ');
         this.loading = false;
       });
