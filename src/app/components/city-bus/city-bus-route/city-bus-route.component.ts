@@ -28,7 +28,6 @@ export class CityBusRouteComponent {
 
   public loading: boolean;
 
-  // public stopResponse: Array<BusStopOfRoute>;
   public stopResponse: Array<BusStopOfRoute>;
   public subscription: Subscription;
 
@@ -116,8 +115,12 @@ export class CityBusRouteComponent {
       case 'map':
         this.router.navigate(['/city-bus/map'], { queryParams: 
           {
-            goLocationInfo: JSON.stringify(this.goLocationInfo),
-            returnLocationInfo: JSON.stringify(this.returnLocationInfo),
+            city: this.city,
+            routeName: this.routeName,
+            start: this.goDestination,
+            end: this.returnDestination,
+            firstLat: this.goLocationInfo[0].lat,
+            firstLng: this.goLocationInfo[0].lng
           }
         });
         break;

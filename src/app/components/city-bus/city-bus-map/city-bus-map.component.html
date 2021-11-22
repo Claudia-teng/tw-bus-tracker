@@ -15,12 +15,12 @@
     <div [ngClass]="{'selected-direction': !isReturnDirection}"
           (click)="onSetDirection('go')">
       <span>往</span>
-      <span>捷運劍潭站</span>
+      <span>{{ goDestination }}</span>
     </div>
     <div [ngClass]="{'selected-direction': isReturnDirection}"
           (click)="onSetDirection('return')">
       <span>往</span>
-      <span>台北海大</span>
+      <span>{{ returnDestination }}</span>
     </div>
   </div>
 </div>
