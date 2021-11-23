@@ -12,7 +12,7 @@ export class NearbyService {
   ) { }
 
   public getNearByStop(stopLat: number, stopLng: number): Observable<Array<BusStop>>{
-    return this.http.get<Array<BusStop>>(`https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/NearBy?$spatialFilter=nearby(${stopLat}, ${stopLng}, 100)&$format=JSON`);
+    return this.http.get<Array<BusStop>>(`https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/NearBy?$spatialFilter=nearby(${stopLat}, ${stopLng}, 1000)&$format=JSON`);
   }
 
   public getRouteByStop(city: string, stationId: string): Observable<Array<BusRoute>>{
