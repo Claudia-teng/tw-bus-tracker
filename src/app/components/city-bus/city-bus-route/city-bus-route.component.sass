@@ -57,11 +57,14 @@
 .route
   background-color: var(--gray)
   height: 90%
-  > div:nth-child(1)
-    text-align: right
+  > div:first-child
+    display: flex
+    justify-content: space-between
     color: var(--blue)
     padding: 1rem 1rem .5rem 1rem
     font-size: .8rem
+    > div:first-child
+      color: var(--white)
   .card-area
     overflow-y: scroll
     height: 90%

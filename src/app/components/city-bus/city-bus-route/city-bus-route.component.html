@@ -33,9 +33,14 @@
     <ng-template #showRouteResult>
       <div class="route">
         <div>
-          *於
-          <span> {{ secondCountdown }}</span>
-          秒前更新
+          <div>
+            路線：{{ routeName}}
+          </div>
+          <div>
+            *於
+            <span> {{ secondCountdown }}</span>
+            秒前更新
+          </div>
         </div>
         <div class="card-area">
           <ng-container *ngFor="let stop of stopResult">
