@@ -51,6 +51,7 @@ export class NearbyStopNumComponent {
   public playAudio(): void {
     let audio = new Audio();
     audio.src = "../../../../assets/bus.mp3";
+    audio.crossOrigin = 'anonymous';
     audio.load();
     audio.play();
   }
