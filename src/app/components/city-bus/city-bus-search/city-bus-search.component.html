@@ -16,7 +16,7 @@
         <div *ngIf="keyboardMode==='number'"
               class="number">
           <div>
-            <button (click)="this.keyboardMode='city'; playAudio();">
+            <button (click)="this.keyboardMode='city'">
               <img src="assets/navigate-icon.png">
               {{ selectedCity ? selectedCity.label : "請先選擇縣市" }}
             </button>
@@ -27,7 +27,7 @@
                 <ng-container *ngSwitchCase="'更多'">
                   <button [ngStyle]="{color: button.textColor}"
                           [ngClass]="{'disabled': !selectedCity}"
-                          (click)="this.keyboardMode='others'; playAudio();"
+                          (click)="this.keyboardMode='others';"
                           [disabled]="!selectedCity">
                           {{ button.label }}
                   </button>
@@ -75,7 +75,7 @@
                   (click)="onSearch(button.label, 'others')">
             {{ button.label }}
           </button>
-          <button (click)="this.keyboardMode='number'; playAudio();">
+          <button (click)="this.keyboardMode='number'">
             回上一頁
           </button>
         </div>

@@ -104,7 +104,6 @@ export class CityBusRouteComponent {
   }
 
   public navigateTo(page: string): void {
-    this.playAudio();
     switch(page) {
       case 'index':
         this.router.navigate(['']);
@@ -151,7 +150,6 @@ export class CityBusRouteComponent {
   }
 
   public onChangeDirection(direction: string): void {
-    this.playAudio();
     if (direction === 'go') {
       this.stopResult = this.stopResponse[0].Stops;
       this.isReturnDirection = false;
@@ -161,14 +159,6 @@ export class CityBusRouteComponent {
       this.isReturnDirection = true;
       this.bindInfoByDirection(this.stopResult);
     } 
-  }
-
-  public playAudio(): void {
-    let audio = new Audio();
-    audio.src = "../../../../assets/bus.mp3";
-    audio.crossOrigin = 'anonymous';
-    audio.load();
-    audio.play();
   }
 
   ngOnDestroy() {

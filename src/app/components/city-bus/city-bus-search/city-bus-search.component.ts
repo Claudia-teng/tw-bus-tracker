@@ -41,7 +41,6 @@ export class CityBusSearchComponent {
   public inputFocus: boolean;
 
   public navigateToIndex(): void {
-    this.playAudio();
     this.router.navigate([''])
   }
 
@@ -51,12 +50,10 @@ export class CityBusSearchComponent {
   }
 
   public onSelectCity(city: KeyboardBtns): void {
-    this.playAudio();
     this.selectedCity = city;
   }
 
   public onSetSearchCity(): void {
-    this.playAudio();
     this.searchInput = ''
     this.keyboardMode="number";
     if (!this.selectedCity) return;
@@ -69,7 +66,6 @@ export class CityBusSearchComponent {
   }
 
   public onSearch(input?: string, type?: string): void {
-    this.playAudio();
     this.loading = true;
     if (type === 'others') this.searchInput = ''
     if (input) this.searchInput += input;
@@ -81,7 +77,6 @@ export class CityBusSearchComponent {
   }
 
   public navigateToRoute(route: string): void {
-    this.playAudio();
     this.router.navigate(['city-bus/route'], 
       { queryParams: 
         {
@@ -99,16 +94,7 @@ export class CityBusSearchComponent {
   }
 
   public onDeleteSingle(): void {
-    this.searchInput = this.searchInput.slice(0, -1); 
-    this.playAudio();
+    this.searchInput = this.searchInput.slice(0, -1);
     this.onSearch();
-  }
-
-  public playAudio(): void {
-    let audio = new Audio();
-    audio.src = "../../../../assets/bus.mp3";
-    audio.crossOrigin = 'anonymous';
-    audio.load();
-    audio.play();
   }
 }

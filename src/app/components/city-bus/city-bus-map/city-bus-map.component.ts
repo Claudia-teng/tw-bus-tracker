@@ -180,17 +180,14 @@ export class CityBusMapComponent {
 }
 
   public navigateToSearch(): void {
-    this.playAudio();
     this.router.navigate(['city-bus/search']);
   }
 
   public navigateToIndex(): void {
-    this.playAudio();
     this.router.navigate(['']);
   }
 
   public onSetDirection(direction: string): void {
-    this.playAudio();
     this.isReturnDirection = direction === 'go' ? false : true;
     this.overlays = [];
     let polygonLocation = [];
@@ -233,13 +230,5 @@ export class CityBusMapComponent {
           this.infoWindow.open(event.map, event.overlay);
           event.map.setCenter(event.overlay.getPosition());
       }
-  }
-
-  public playAudio(): void {
-    let audio = new Audio();
-    audio.src = "../../../../assets/bus.mp3";
-    audio.crossOrigin = 'anonymous';
-    audio.load();
-    audio.play();
   }
 }

@@ -11,8 +11,6 @@ export class IndexComponent {
   constructor(private router: Router) {}
 
   public navigateTo(page: string): void {
-    this.playAudio();
-    
     switch (page) {
       case 'city-bus':
         this.router.navigate(['city-bus/search']);
@@ -24,13 +22,5 @@ export class IndexComponent {
         this.router.navigate(['intercity-bus/normal-search']);
         break;
     }
-  }
-
-  public playAudio(): void {
-    let audio = new Audio();
-    audio.src = "../../../../assets/bus.mp3";
-    audio.crossOrigin = 'anonymous';
-    audio.load();
-    audio.play();
   }
 }

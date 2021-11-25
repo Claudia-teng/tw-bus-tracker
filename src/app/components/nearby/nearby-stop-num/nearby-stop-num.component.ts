@@ -28,17 +28,14 @@ export class NearbyStopNumComponent {
   }
 
   public navigateToStop(): void {
-    this.playAudio();
     this.router.navigate(['nearby/stop']);
   }
 
   public navigateToIndex(): void {
-    this.playAudio();
     this.router.navigate(['']);
   }
 
   public navigateToRoute(route: RouteDetail): void {
-    this.playAudio();
     this.router.navigate(['city-bus/route'], {queryParams:
       {
         city: route.city,
@@ -47,13 +44,4 @@ export class NearbyStopNumComponent {
       }
     })
   }
-
-  public playAudio(): void {
-    let audio = new Audio();
-    audio.src = "../../../../assets/bus.mp3";
-    audio.crossOrigin = 'anonymous';
-    audio.load();
-    audio.play();
-  }
-
 }

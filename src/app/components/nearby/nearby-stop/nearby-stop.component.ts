@@ -71,25 +71,15 @@ export class NearbyStopComponent {
   }
 
   public navigateToIndex(): void {
-    this.playAudio();
     this.router.navigate(['']);
   }
 
   public navigateToNum(stop: BusStop): void {
-    this.playAudio();
     this.router.navigate(['nearby/stop-num'], {queryParams: 
       {
         stopName: stop.StopName.Zh_tw,
         route: JSON.stringify(stop.Route)
       }
     });
-  }
-
-  public playAudio(): void {
-    let audio = new Audio();
-    audio.src = "../../../../assets/bus.mp3";
-    audio.crossOrigin = 'anonymous';
-    audio.load();
-    audio.play();
   }
 }
