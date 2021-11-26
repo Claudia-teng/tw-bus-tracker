@@ -3,6 +3,7 @@
     <div class="background">
       <div class="topbar">
         <img src="assets/topbar-logo.png"
+        alt="Index"
         (click)="navigateToIndex()">
         <input #search
               placeholder="請透過鍵盤輸入關鍵字" 
@@ -17,7 +18,7 @@
               class="number">
           <div>
             <button (click)="this.keyboardMode='city'">
-              <img src="assets/navigate-icon.png">
+              <img src="assets/navigate-icon.png" alt="Marker">
               {{ selectedCity ? selectedCity.label : "請先選擇縣市" }}
             </button>
           </div>
@@ -53,7 +54,7 @@
             <button (click)="onDeleteSingle()"
               [ngClass]="{'disabled': !selectedCity}"
               [disabled]="!selectedCity">
-              <img src="assets/delete-icon.png">
+              <img src="assets/delete-icon.png" alt="Delete">
             </button>
           </div>
         </div>
