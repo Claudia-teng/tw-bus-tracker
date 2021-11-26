@@ -51,7 +51,8 @@
               </ng-container>
             </ng-container>
             <button (click)="onDeleteSingle()"
-              [ngClass]="{'disabled': !selectedCity}">
+              [ngClass]="{'disabled': !selectedCity}"
+              [disabled]="!selectedCity">
               <img src="assets/delete-icon.png">
             </button>
           </div>
