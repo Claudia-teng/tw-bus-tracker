@@ -1,6 +1,6 @@
-import { Component, PACKAGE_ROOT_URL } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { BusStop, RouteDetail } from 'src/app/models';
+import { BusStop, RouteDetail } from 'src/app/model';
 
 @Component({
   selector: 'nearby-stop-num',

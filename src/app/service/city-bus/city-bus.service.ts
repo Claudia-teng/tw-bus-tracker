@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { BusN1EstimateTime, BusRoute, BusStopOfRoute } from 'src/app/models';
+import { BusN1EstimateTime, BusRoute, BusStopOfRoute } from 'src/app/model';
 
 @Injectable({ providedIn: 'root' })
 export class CityBusService {

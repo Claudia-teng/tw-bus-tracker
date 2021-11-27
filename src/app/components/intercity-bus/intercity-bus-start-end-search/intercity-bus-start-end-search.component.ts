@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { KeyboardBtns } from 'src/app/models';
+import { KeyboardBtns } from 'src/app/model';
 import { cityBusCity } from '../keyboard-list/keyboard-list';
 
 @Component({

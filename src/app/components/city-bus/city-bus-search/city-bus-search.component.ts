@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { BusRoute, KeyboardBtns } from 'src/app/models';
+import { BusRoute, KeyboardBtns } from 'src/app/model';
 import { CityBusService } from 'src/app/service';
 
 import { cityBusNumber, cityBusCity, cityBusOthers } from './keyboard-list/keyboard-list';

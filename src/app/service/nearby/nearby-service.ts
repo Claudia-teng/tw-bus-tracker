@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { BusRoute, BusStop, BusStopOfRoute } from 'src/app/models';
+import { BusRoute, BusStop } from 'src/app/model';
 
 @Injectable({ providedIn: 'root' })
 export class NearbyService {

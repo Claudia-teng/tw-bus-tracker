@@ -1,4 +1,4 @@
-import { KeyboardBtns } from 'src/app/models';
+import { KeyboardBtns } from 'src/app/model';
 
 export const cityBusNumber: Array<KeyboardBtns> = [
   { label: '台北市',

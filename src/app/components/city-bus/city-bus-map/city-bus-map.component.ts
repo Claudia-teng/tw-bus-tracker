@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { BusStopOfRoute, Stop, StopLocation } from 'src/app/models';
+import { BusStopOfRoute, Stop, StopLocation } from 'src/app/model';
 import { CityBusService } from 'src/app/service';
 declare var google: any
 

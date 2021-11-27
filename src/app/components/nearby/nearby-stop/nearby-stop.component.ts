@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BusStop } from 'src/app/models';
+import { BusStop } from 'src/app/model';
 import { NearbyService } from 'src/app/service';
 
 @Component({

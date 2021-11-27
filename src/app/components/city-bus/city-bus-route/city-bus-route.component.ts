@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription} from 'rxjs';
-import { BusN1EstimateTime, BusStopOfRoute, Stop, StopLocation } from 'src/app/models';
+import { BusN1EstimateTime, BusStopOfRoute, Stop, StopLocation } from 'src/app/model';
 import { CityBusService } from 'src/app/service';
 
 @Component({
