@@ -1,28 +1,32 @@
-# TwBusTracker
+# 作品說明
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
+The F2E 全台公車動態時刻查詢應用服務
 
-## Development server
+- 搜尋指定公車路線的站序資料、預估時間
+- 搜尋附近站牌及路線資料
+- 地圖模式查詢公車路線站牌位置
+- 手機、平板、電腦皆可使用
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+（目前有透過locaStorage的方式存放查詢縣市）
 
-## Code scaffolding
+# 系統說明
+專案運行方式：ng serve
+網站連結：https://claudia-teng.github.io/tw-bus-tracker/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# 資料夾說明
 
-## Build
+src/app:
+- auth：利用intercepter處理http request header
+- components：主要分為 index（首頁）, city-bus（公車）, nearby（附近站牌）, intercity-bus（客運、未實作）
+- model/service
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# 使用技術
 
-## Running unit tests
+- Angular
+- Sass
+- PrimeNG
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# 第三方服務
 
-## Running end-to-end tests
+- Google map
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# tw-bus-tracker
