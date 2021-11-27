@@ -17,7 +17,7 @@ export class CityBusSearchComponent {
     let isPC = window.matchMedia('(min-width: 1025px)');
     if (isPC.matches) return;
     if (this.inputFocus) {
-      setTimeout(() => this.inputFocus = false, 1000)
+      setTimeout(() => this.inputFocus = false, 1000);
       return;
     }
     this.searchMode = false;
@@ -40,6 +40,13 @@ export class CityBusSearchComponent {
   public loading: boolean;
   public inputFocus: boolean;
 
+  ngOnInit() {
+    if (localStorage.getItem('city')) {
+      this.selectedCity = JSON.parse(localStorage.getItem('city'));
+      this.onSetSearchCity();
+    };
+  }
+
   public navigateToIndex(): void {
     this.router.navigate([''])
   }
@@ -57,6 +64,7 @@ export class CityBusSearchComponent {
     this.searchInput = ''
     this.keyboardMode="number";
     if (!this.selectedCity) return;
+    localStorage.setItem('city', JSON.stringify(this.selectedCity));
     this.loading = true;
     this.displaySelectCity = this.selectedCity.label
     this.cityBusService.getBusByCity(this.selectedCity.value).subscribe(res => {
@@ -81,8 +89,7 @@ export class CityBusSearchComponent {
       { queryParams: 
         {
           city: this.selectedCity.value,
-          route: route,
-          pageUrl: this.router.url
+          route: route
         }
       }
     )

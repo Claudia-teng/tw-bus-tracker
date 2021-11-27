@@ -39,8 +39,7 @@ export class NearbyStopNumComponent {
     this.router.navigate(['city-bus/route'], {queryParams:
       {
         city: route.city,
-        route: route.name ,
-        pageUrl: '/nearby/stop'
+        route: route.name
       }
     })
   }

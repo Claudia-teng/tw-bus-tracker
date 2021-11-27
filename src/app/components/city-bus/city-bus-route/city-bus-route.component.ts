@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription, timer } from 'rxjs';
+import { Subscription} from 'rxjs';
 import { BusN1EstimateTime, BusStopOfRoute, Stop, StopLocation } from 'src/app/models';
 import { CityBusService } from 'src/app/service';
 
@@ -13,12 +14,12 @@ export class CityBusRouteComponent {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private location: Location,
               private cityBusService: CityBusService) {}
 
   public isReturnDirection: boolean = false;
   public city: string;
   public routeName: string;
-  public pageUrl: string
   public goDestination: string;
   public returnDestination: string;
   public stopResult: Array<Stop>;
@@ -39,8 +40,7 @@ export class CityBusRouteComponent {
       (params: Params) => {
         this.loading = true;
         this.city = params.city,
-        this.routeName = params.route;
-        this.pageUrl = params.pageUrl
+        this.routeName = params.route
       }
     );
     
@@ -110,7 +110,7 @@ export class CityBusRouteComponent {
         break;
       // change to back page
       case 'back':
-        this.router.navigate([this.pageUrl]);
+        this.location.back();
         break;
       case 'map':
         this.router.navigate(['/city-bus/map'], { queryParams: 
@@ -136,7 +136,7 @@ export class CityBusRouteComponent {
       }
       this.goLocationInfo.push(locationInfo);
     });
-    // can be only one way
+    // might be one way
     if (this.stopResponse[1]) {
       this.stopResponse[1].Stops.forEach(stop => {
         let locationInfo: StopLocation = {

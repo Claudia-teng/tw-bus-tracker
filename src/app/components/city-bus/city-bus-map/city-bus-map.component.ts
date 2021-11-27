@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BusStopOfRoute, Stop, StopLocation } from 'src/app/models';
 import { CityBusService } from 'src/app/service';
@@ -13,6 +14,7 @@ export class CityBusMapComponent {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private location: Location,
               private cityBusService: CityBusService) {}
 
   public overlays: any[] = [];
@@ -142,7 +144,7 @@ export class CityBusMapComponent {
         }
         this.goLocationInfo.push(locationInfo);
       });
-      // can be only one way
+      // might be one way
       if (this.stopResponse[1]) {
         this.stopResponse[1].Stops.forEach(stop => {
           let locationInfo: StopLocation = {
@@ -179,8 +181,8 @@ export class CityBusMapComponent {
     }
 }
 
-  public navigateToSearch(): void {
-    this.router.navigate(['city-bus/search']);
+  public navigateToPrevious(): void {
+    this.location.back();
   }
 
   public navigateToIndex(): void {
