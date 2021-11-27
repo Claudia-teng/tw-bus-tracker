@@ -2,7 +2,7 @@
 
 The F2E 全台公車動態時刻查詢應用服務
 
-![Index](./src/assets/md/md-index.png)
+<img src="./src/assets/md/md-index.png" alt="introduction" width="200"/>
 
 - 搜尋指定公車路線的站序資料、預估時間
 - 搜尋附近站牌及路線資料
