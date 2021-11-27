@@ -17,12 +17,9 @@ The F2E 全台公車動態時刻查詢應用服務
 # 資料夾說明
 
 src/app:
-
-auth：利用intercepter處理http request header
-
-components：主要分為 index（首頁）, city-bus（公車）, nearby（附近站牌）, intercity-bus（客運、未實作）
-
-model/service
+- auth：利用intercepter處理http request header
+- components：主要分為 index（首頁）, city-bus（公車）, nearby（附近站牌）, intercity-bus（客運、未實作）
+- model/service
 
 # 使用技術
 
