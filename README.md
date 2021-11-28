@@ -23,15 +23,19 @@ Design: [KT](https://www.behance.net/KT_Designer)
 src/app:
 - auth：利用intercepter處理http request header
 - components：主要分為 index（首頁）, city-bus（公車）, nearby（附近站牌）, intercity-bus（客運、未實作）
-- model/service
+- model：存放所有interface
+- service：存放所有service
 
 # 使用技術
 
 - Angular
 - Sass
 - PrimeNG
+- CSS Flexbox
+- CSS Grid
+- RWD
 
 # 第三方服務
 
-- Google map
+- Google Maps
 
