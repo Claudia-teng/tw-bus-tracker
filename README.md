@@ -9,6 +9,9 @@ The F2E 全台公車動態時刻查詢應用服務
 - 地圖模式檢視公車路線站牌位置
 - 手機、平板、電腦皆可使用
 
+Data source: [TDX 運輸資料流通服務](https://tdx.transportdata.tw/)
+Design: [KT](https://www.behance.net/KT_Designer)
+
 # 系統說明
 專案運行方式：ng serve
 
