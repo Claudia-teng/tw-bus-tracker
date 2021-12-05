@@ -100,7 +100,8 @@
               <p>{{ bus.start }} - {{ bus.end }}</p>
             </div>
             <div (click)="editFavList(bus)">
-              <div class="heart" [ngClass]="bus.isFav ? 'isFav' : 'isNotFav'"></div>
+              <i *ngIf="bus.isFav" class="pi pi-heart-fill"></i>
+              <i *ngIf="!bus.isFav" class="pi pi-heart"></i>
             </div>
           </div>
         </div>

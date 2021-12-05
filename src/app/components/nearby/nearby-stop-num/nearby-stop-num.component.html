@@ -27,7 +27,8 @@
             <p>{{ route.start }}-{{ route.end }}<p>
           </div>
           <div (click)="editFavList(route)">
-            <div class="heart" [ngClass]="route.isFav ? 'isFav' : 'isNotFav'"></div>
+            <i *ngIf="route.isFav" class="pi pi-heart-fill"></i>
+            <i *ngIf="!route.isFav" class="pi pi-heart"></i>
           </div>
         </div>
       </ng-container>

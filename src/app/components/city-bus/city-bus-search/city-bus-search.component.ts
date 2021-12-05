@@ -131,7 +131,7 @@ export class CityBusSearchComponent {
     if (!this.favList) this.favList = [];
 
     if (bus.isFav) {
-      let index = this.favList.indexOf(bus);
+      let index = this.favList.findIndex(fav => fav.city === bus.city && fav.name === bus.name);
       this.favList.splice(index, 1);
     } else {
       this.favList.push({
