@@ -9,14 +9,14 @@ import { RouteDetail } from 'src/app/model';
 })
 export class MyFavComponent {
 
-  public noFavRoutes: boolean = false;
-  public favRoutes: Array<RouteDetail>;
+  public noFavList: boolean = false;
+  public favList: Array<RouteDetail>;
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.favRoutes = JSON.parse(localStorage.getItem('favList')) ?? [];
-    if (this.favRoutes.length === 0) this.noFavRoutes = true;
+    this.favList = JSON.parse(localStorage.getItem('favList')) ?? [];
+    if (this.favList.length === 0) this.noFavList = true;
   }
 
   public navigateToIndex(): void {
@@ -37,8 +37,8 @@ export class MyFavComponent {
   }
 
   public removeFromList(route: RouteDetail) : void {
-    let index = this.favRoutes.indexOf(route);
-    this.favRoutes.splice(index, 1);
-    localStorage.setItem('favList', JSON.stringify(this.favRoutes));
+    let index = this.favList.indexOf(route);
+    this.favList.splice(index, 1);
+    localStorage.setItem('favList', JSON.stringify(this.favList));
   }
 }

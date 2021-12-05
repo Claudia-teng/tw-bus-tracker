@@ -7,7 +7,7 @@
 
 <div class="content-container">
   <div>
-    <ng-container *ngIf="noFavRoutes; else showResult">
+    <ng-container *ngIf="noFavList; else showResult">
       <div class="no-fav">
         <div>還沒有收藏的路線喔</div>
         <button class="my-fav"
@@ -18,7 +18,7 @@
     </ng-container>
     <ng-template #showResult>
       <div class="result">
-        <ng-container *ngFor="let route of favRoutes">
+        <ng-container *ngFor="let route of favList">
           <div class="card">
             <div (click)="navigateToRoute(route)">
               <p>{{ route.name }}</p>
