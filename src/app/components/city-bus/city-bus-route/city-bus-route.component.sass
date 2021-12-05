@@ -132,11 +132,15 @@
   .card
     grid-template-columns: 0.5fr 1.5fr 0.4fr 0.005fr 0.2fr
 
+@include breakpoint(padpro)
+  .card
+    grid-template-columns: 0.4fr 2fr 0.3fr 0.005fr 0.15fr
+
 @include breakpoint(pc)
   .content-container > div
     max-width: 1300px
   .card
-    grid-template-columns: 0.3fr 1.7fr 0.2fr 0.005fr 0.2fr
+    grid-template-columns: 0.3fr 1.7fr 0.2fr 0.003fr 0.2fr
   .direction, .topbar > div > img
     cursor: pointer
   

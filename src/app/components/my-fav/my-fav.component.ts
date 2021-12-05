@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BusStop, RouteDetail } from 'src/app/model';
-import { NearbyService } from 'src/app/service';
+import { RouteDetail } from 'src/app/model';
 
 @Component({
   selector: 'my-fav',
@@ -13,13 +12,11 @@ export class MyFavComponent {
   public noFavRoutes: boolean = false;
   public favRoutes: Array<RouteDetail>;
 
-  constructor(private router: Router,
-              private nearbyService: NearbyService) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.favRoutes = JSON.parse(localStorage.getItem('favList')) ?? [];
     if (this.favRoutes.length === 0) this.noFavRoutes = true;
-    console.log('this.favRoutes', this.favRoutes)
   }
 
   public navigateToIndex(): void {
@@ -44,6 +41,4 @@ export class MyFavComponent {
     this.favRoutes.splice(index, 1);
     localStorage.setItem('favList', JSON.stringify(this.favRoutes));
   }
-
-  
 }

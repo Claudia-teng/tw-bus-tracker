@@ -7,6 +7,7 @@ The F2E 全台公車動態時刻查詢應用服務
 - 搜尋指定公車路線的站序資料、預估時間
 - 搜尋附近站牌及路線資料
 - 地圖模式檢視公車路線站牌位置
+- 收藏常用路線（目前使用local storage）
 - 手機、平板、電腦皆可使用
 
 Data source: [TDX 運輸資料流通服務](https://tdx.transportdata.tw/)
@@ -22,7 +23,7 @@ Design: [KT](https://www.behance.net/KT_Designer)
 
 src/app:
 - auth：利用intercepter處理http request header
-- components：主要分為 index（首頁）, city-bus（公車）, nearby（附近站牌）, intercity-bus（客運、未實作）
+- components：主要分為 index（首頁）, city-bus（公車）, nearby（附近站牌）, my-fav（收藏路線）
 - model：存放所有interface
 - service：存放所有service
 
