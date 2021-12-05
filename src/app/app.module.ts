@@ -17,18 +17,9 @@ import { CityBusRouteComponent } from './components/city-bus/city-bus-route/city
 import { IndexComponent } from './components/index/index.component';
 import { NearbyStopComponent } from './components/nearby/nearby-stop/nearby-stop.component';
 import { NearbyStopNumComponent } from './components/nearby/nearby-stop-num/nearby-stop-num.component';
-import { IntercityBusNormalSearchComponent } from './components/intercity-bus/intercity-bus-normal-search/intercity-bus-normal-search.component';
-import { IntercityBusStartEndSearchComponent } from './components/intercity-bus/intercity-bus-start-end-search/intercity-bus-start-end-search.component';
-import { IntercityBusPriceQueryComponent } from './components/intercity-bus/intercity-bus-price-query/intercity-bus-price-query.component';
-import { IntercityBusTimeTableComponent } from './components/intercity-bus/intercity-bus-time-table/intercity-bus-time-table.component';
-import { IntercityBusSelectDateComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-date/intercity-bus-select-date.component';
-import { IntercityBusSelectStopComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-stop/intercity-bus-select-stop.component';
-import { IntercityBusSelectTimeComponent } from './components/intercity-bus/intercity-bus-price-query/select/select-time/intercity-bus-select-time.component';
 import { CityBusMapComponent } from './components/city-bus/city-bus-map/city-bus-map.component';
+import { MyFavComponent } from './components/my-fav/my-fav.component';
 import { AuthInterceptorService } from './auth/auth.intercepter.service';
-
-
-
 
 @NgModule({
   declarations: [
@@ -39,13 +30,7 @@ import { AuthInterceptorService } from './auth/auth.intercepter.service';
     CityBusMapComponent,
     NearbyStopComponent,
     NearbyStopNumComponent,
-    IntercityBusNormalSearchComponent,
-    IntercityBusStartEndSearchComponent,
-    IntercityBusPriceQueryComponent,
-    IntercityBusTimeTableComponent,
-    IntercityBusSelectTimeComponent,
-    IntercityBusSelectDateComponent,
-    IntercityBusSelectStopComponent
+    MyFavComponent
   ],
   imports: [
     BrowserModule,

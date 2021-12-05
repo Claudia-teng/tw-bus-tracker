@@ -21,9 +21,14 @@
   <ng-template #showResult>
     <div class="result">
       <ng-container *ngFor="let route of routeResult">
-        <div (click)="navigateToRoute(route)">
-          <p>{{ route.name }}</p>
-          <p>{{ route.start }}-{{ route.end }}<p>
+        <div class="card">
+          <div (click)="navigateToRoute(route)">
+            <p>{{ route.name }}</p>
+            <p>{{ route.start }}-{{ route.end }}<p>
+          </div>
+          <div (click)="editFavList(route)">
+            <div class="heart" [ngClass]="route.isFav ? 'isFav' : 'isNotFav'"></div>
+          </div>
         </div>
       </ng-container>
     </div>

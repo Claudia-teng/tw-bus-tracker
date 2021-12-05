@@ -1,0 +1,36 @@
+<div class="topbar">
+  <img src="assets/topbar-logo.png"
+      alt="Index"
+      (click)="navigateToIndex()">
+  <div>收藏路線</div>
+</div>
+
+<div class="content-container">
+  <div>
+    <ng-container *ngIf="noFavRoutes; else showResult">
+      <div class="no-fav">
+        <div>還沒有收藏的路線喔</div>
+        <button class="my-fav"
+                (click)="navigateToSearch()">
+                去收藏
+        </button>
+      </div>
+    </ng-container>
+    <ng-template #showResult>
+      <div class="result">
+        <ng-container *ngFor="let route of favRoutes">
+          <div class="card">
+            <div (click)="navigateToRoute(route)">
+              <p>{{ route.name }}</p>
+              <p>{{ route.start }} - {{ route.end }}</p>
+            </div>
+            <div (click)="removeFromList(route)">
+              <div class="heart"></div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
+  </div>
+</div>
+

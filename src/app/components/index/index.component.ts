@@ -18,8 +18,8 @@ export class IndexComponent {
       case 'nearby':
         this.router.navigate(['nearby/stop']);
         break;
-      case 'intercity-bus':
-        this.router.navigate(['intercity-bus/normal-search']);
+      case 'my-fav':
+        this.router.navigate(['my-fav']);
         break;
     }
   }

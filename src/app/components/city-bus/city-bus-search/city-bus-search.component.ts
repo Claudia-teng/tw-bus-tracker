@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { BusRoute, KeyboardBtns } from 'src/app/model';
+import { BusRoute, KeyboardBtns, RouteDetail } from 'src/app/model';
 import { CityBusService } from 'src/app/service';
 
 import { cityBusNumber, cityBusCity, cityBusOthers } from './keyboard-list/keyboard-list';
@@ -36,9 +36,10 @@ export class CityBusSearchComponent {
   public searchInput: string = '';
   public selectedCity: KeyboardBtns;
   public displaySelectCity: string;
-  public busResult: Array<BusRoute>;
+  public busResult: Array<RouteDetail>;
   public loading: boolean;
   public inputFocus: boolean;
+  public favList: Array<RouteDetail>;
 
   public navigateToIndex(): void {
     this.router.navigate([''])
@@ -60,8 +61,17 @@ export class CityBusSearchComponent {
     this.loading = true;
     this.displaySelectCity = this.selectedCity.label
     this.cityBusService.getBusByCity(this.selectedCity.value).subscribe(res => {
-      this.busResult = res;
       setTimeout(() => this.loading = false, 800);
+      this.busResult = [];
+      res.forEach(route => {
+        this.busResult.push({
+          city: route.City,
+          name: route.RouteName.Zh_tw,
+          start: route.DepartureStopNameZh,
+          end: route.DestinationStopNameZh
+        })
+      });
+      this.checkFavList();
     });
   }
 
@@ -72,7 +82,27 @@ export class CityBusSearchComponent {
     // console.log('this.searchInput', this.searchInput)
     this.cityBusService.getBusByCity(this.selectedCity.value, this.searchInput).subscribe(res => {
       setTimeout(() => this.loading = false, 800);
-      this.busResult = res;
+      this.busResult = [];
+      res.forEach(route => {
+        this.busResult.push({
+          city: route.City,
+          name: route.RouteName.Zh_tw,
+          start: route.DepartureStopNameZh,
+          end: route.DestinationStopNameZh
+        })
+      })
+      this.checkFavList();
+    });
+  }
+
+  public checkFavList(): void {
+    this.favList = JSON.parse(localStorage.getItem('favList')) ?? [];
+    this.busResult.forEach(route => {
+      if (this.favList.some(fav => fav.city === route.city && fav.name === route.name)) {
+        route.isFav = true;
+      } else {
+        route.isFav = false;
+      }
     });
   }
 
@@ -95,5 +125,24 @@ export class CityBusSearchComponent {
   public onDeleteSingle(): void {
     this.searchInput = this.searchInput.slice(0, -1);
     this.onSearch();
+  }
+
+  public editFavList(bus: RouteDetail): void {
+    if (!this.favList) this.favList = [];
+
+    if (bus.isFav) {
+      let index = this.favList.indexOf(bus);
+      this.favList.splice(index, 1);
+    } else {
+      this.favList.push({
+        city: bus.city,
+        name: bus.name,
+        start: bus.start,
+        end: bus.end
+      });
+    }
+
+    localStorage.setItem('favList', JSON.stringify(this.favList));
+    this.checkFavList();
   }
 }

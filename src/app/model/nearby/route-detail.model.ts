@@ -1,6 +1,7 @@
 export interface RouteDetail {
-  city: string;
-  name: string;
-  start: string;
-  end: string
+  city: string,
+  name: string,
+  start: string,
+  end: string,
+  isFav?: boolean
 }

@@ -23,6 +23,7 @@ export interface BusRoute {
   CityCode?: string,
   UpdateTime: string,
   VersionID: number
+  isFav?: boolean
 }
 
 interface BusSubRoute {

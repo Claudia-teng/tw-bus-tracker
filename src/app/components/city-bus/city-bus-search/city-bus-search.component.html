@@ -94,10 +94,14 @@
           {{ displaySelectCity }}
         </p>
         <div class="card-area" (scroll)="onScrollEvent()">
-          <div *ngFor="let bus of busResult"
-            (click)="navigateToRoute(bus.RouteName.Zh_tw)">
-            <p>{{ bus.RouteName.Zh_tw }}</p>
-            <p>{{ bus.DepartureStopNameZh }} - {{ bus.DestinationStopNameZh }}</p>
+          <div class="card" *ngFor="let bus of busResult">
+            <div (click)="navigateToRoute(bus.name)">
+              <p>{{ bus.name }}</p>
+              <p>{{ bus.start }} - {{ bus.end }}</p>
+            </div>
+            <div (click)="editFavList(bus)">
+              <div class="heart" [ngClass]="bus.isFav ? 'isFav' : 'isNotFav'"></div>
+            </div>
           </div>
         </div>
       </div>

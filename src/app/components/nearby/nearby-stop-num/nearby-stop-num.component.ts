@@ -11,6 +11,7 @@ export class NearbyStopNumComponent {
 
   public stopName: Array<BusStop>;
   public routeResult: Array<RouteDetail>;
+  public favList: Array<RouteDetail>;
   public loading: boolean;
 
   constructor(private router: Router,
@@ -22,7 +23,8 @@ export class NearbyStopNumComponent {
       (params: Params) => {
         this.stopName = params.stopName;
         this.routeResult = JSON.parse(params.route);
-        setTimeout(() => this.loading = false, 800)
+        this.checkFavList();
+        setTimeout(() => this.loading = false, 800);
       }
     );
   }
@@ -42,5 +44,35 @@ export class NearbyStopNumComponent {
         route: route.name
       }
     })
+  }
+
+  public checkFavList() : void {
+    this.favList = JSON.parse(localStorage.getItem('favList')) ?? [];
+    this.routeResult.forEach(route => {
+      if (this.favList.some(fav => fav.city === route.city && fav.name === route.name)) {
+        route.isFav = true;
+      } else {
+        route.isFav = false;
+      }
+    })
+  }
+
+  public editFavList(route: RouteDetail): void {
+    if (!this.favList) this.favList = [];
+
+    if (route.isFav) {
+      let index = this.favList.indexOf(route);
+      this.favList.splice(index, 1);
+    } else {
+      this.favList.push({
+        city: route.city,
+        name: route.name,
+        start: route.start,
+        end: route.end
+      });
+    }
+
+    localStorage.setItem('favList', JSON.stringify(this.favList));
+    this.checkFavList();
   }
 }
