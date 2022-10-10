@@ -1,3 +1,8 @@
+此作品獲得The F2E 3rd [前端組入圍獎](https://2021.thef2e.com/reward/)
+
+<img width="306" alt="Screen Shot 2022-10-10 at 3 02 10 PM" src="https://user-images.githubusercontent.com/55543282/194813262-88cbe455-e834-43ac-ab81-ac986bad4bb7.png">
+
+
 # 作品說明
 
 The F2E 全台公車動態時刻查詢應用服務
